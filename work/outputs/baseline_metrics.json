@@ -1,0 +1,7 @@
+{
+  "total_candidates": 300,
+  "top_10_avg_score": 0.5388233488911671,
+  "signal_1_verdict": "CONFIRMED",
+  "signal_2_verdict": "MIXED",
+  "rule_reason_code": "CTR_UNDERPERFORM_HIGH_IMPRESSION"
+}
