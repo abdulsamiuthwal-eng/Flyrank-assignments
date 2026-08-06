@@ -1,0 +1,6 @@
+# Ignore website portfolio files
+index.html
+styles.css
+app.js
+*.png
+.DS_Store
