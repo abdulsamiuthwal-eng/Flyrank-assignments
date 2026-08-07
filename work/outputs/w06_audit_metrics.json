@@ -1,0 +1,18 @@
+{
+  "random_split": {
+    "Accuracy": 0.9666666666666667,
+    "Precision": 0.9166666666666666,
+    "Recall": 0.6875,
+    "F1-Score": 0.7857142857142857,
+    "ROC-AUC": 0.9946646341463415
+  },
+  "grouped_split": {
+    "Accuracy": 0.9583333333333334,
+    "Precision": 0.8181818181818182,
+    "Recall": 0.75,
+    "F1-Score": 0.782608695652174,
+    "ROC-AUC": 0.9830246913580247
+  },
+  "f1_delta": -0.0031055900621117516,
+  "honest_split_verdict": "VALIDATED: Honest domain-grouped split reveals true out-of-domain generalizability without artificial inflation."
+}
