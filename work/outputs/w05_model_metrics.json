@@ -1,0 +1,47 @@
+{
+  "test_samples": 150,
+  "models": [
+    {
+      "Model": "Week-4 Baseline Rule",
+      "Accuracy": 0.9133333333333333,
+      "Precision": 0.6,
+      "Recall": 0.4,
+      "F1-Score": 0.48,
+      "ROC-AUC": 0.8908641975308642
+    },
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.8933333333333333,
+      "Precision": 0.42857142857142855,
+      "Recall": 0.2,
+      "F1-Score": 0.2727272727272727,
+      "ROC-AUC": 0.8493827160493826
+    },
+    {
+      "Model": "Decision Tree",
+      "Accuracy": 0.9333333333333333,
+      "Precision": 0.7777777777777778,
+      "Recall": 0.4666666666666667,
+      "F1-Score": 0.5833333333333334,
+      "ROC-AUC": 0.9390123456790124
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 0.94,
+      "Precision": 0.875,
+      "Recall": 0.4666666666666667,
+      "F1-Score": 0.6086956521739131,
+      "ROC-AUC": 0.9723456790123458
+    },
+    {
+      "Model": "Gradient Boosting",
+      "Accuracy": 0.9533333333333334,
+      "Precision": 0.7857142857142857,
+      "Recall": 0.7333333333333333,
+      "F1-Score": 0.7586206896551724,
+      "ROC-AUC": 0.9827160493827161
+    }
+  ],
+  "champion_model": "Random Forest",
+  "f1_improvement_over_baseline": 0.1286956521739131
+}
