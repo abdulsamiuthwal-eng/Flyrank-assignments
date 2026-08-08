@@ -1,0 +1,29 @@
+{
+  "notebook": "w07_action_playbook",
+  "author": "Abdul Sami Uthwal",
+  "model": "GradientBoostingClassifier",
+  "total_pages": 600,
+  "model_f1": 0.7857,
+  "model_roc_auc": 0.9947,
+  "tier_distribution": {
+    "MONITOR_ONLY": 549,
+    "PRIORITY_REVIEW": 49,
+    "SCHEDULED_WATCH": 2
+  },
+  "archetype_distribution": {
+    "Stale Authority": 218,
+    "Low Signal": 190,
+    "Position Climber": 177,
+    "Quick Win": 8,
+    "Thin Opportunity": 7
+  },
+  "priority_eligible_pages": 48,
+  "no_go_pages": 34,
+  "retrain_triggers": {
+    "f1_threshold": 0.72,
+    "precision_threshold": 0.65,
+    "impression_drift_pct": 40.0,
+    "max_days_since_run": 90
+  },
+  "verdict": "PLAYBOOK_VALIDATED \u2014 Ranked queue exported. Human review gates applied. Paper exports ready."
+}
