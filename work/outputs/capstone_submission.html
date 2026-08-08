@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyRank Capstone Submission — ABDUL SAMI UTHWAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #059669;
+            --secondary: #d97706;
+            --accent: #0f766e;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --bg-light: #f8faf9;
+            --heading: 'Plus Jakarta Sans', sans-serif;
+            --body: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            font-family: var(--body);
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* ─── PAGE WRAPPER ─── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 18mm 20mm;
+            background: #fff;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        @media print {
+            body { margin: 0; }
+            .page {
+                margin: 0;
+                padding: 18mm 20mm;
+                page-break-after: always;
+                width: 210mm;
+                min-height: 297mm;
+            }
+            .no-print { display: none; }
+        }
+
+        /* ─── PRINT BUTTON ─── */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: var(--heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 16px rgba(5,150,105,0.3);
+        }
+        .print-btn:hover { background: #047857; }
+
+        /* ─── DECORATIVE ELEMENTS ─── */
+        .page-accent-bar {
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            margin-bottom: 32px;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 14mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-family: var(--body);
+        }
+
+        .page-number {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ─── PAGE 1: COVER ─── */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 297mm;
+        }
+
+        .cover-logo {
+            font-family: var(--heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 48px;
+            letter-spacing: -0.02em;
+        }
+
+        .cover-logo .dot { color: var(--secondary); }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(5,150,105,0.08);
+            border: 1px solid rgba(5,150,105,0.3);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .cover-title {
+            font-family: var(--heading);
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text);
+            max-width: 480px;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cover-title span {
+            background: linear-gradient(135deg, #059669, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-subtitle {
+            font-size: 1rem;
+            color: var(--muted);
+            margin-bottom: 52px;
+            line-height: 1.5;
+        }
+
+        .cover-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 52px;
+        }
+
+        .cover-meta-item {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-family: var(--heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .cover-divider {
+            width: 100%;
+            max-width: 400px;
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 24px;
+        }
+
+        .cover-author {
+            font-family: var(--heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .cover-email {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ─── SECTION HEADINGS ─── */
+        .section-eyebrow {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-family: var(--heading);
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-lead {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            border-left: 3px solid var(--primary);
+            padding-left: 14px;
+        }
+
+        /* ─── CONTENT CARDS ─── */
+        .card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-family: var(--heading);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title .icon {
+            width: 22px;
+            height: 22px;
+            background: rgba(5,150,105,0.12);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .card p, .card li {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .card ul { padding-left: 18px; }
+        .card li { margin-bottom: 4px; }
+
+        /* ─── URL DISPLAY ─── */
+        .url-block {
+            background: #1f2937;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .url-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #9ca3af;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .url-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: #34d399;
+            word-break: break-all;
+        }
+
+        /* ─── METRICS ROW ─── */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .metric-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-family: var(--heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ─── TECH TAGS ─── */
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: #fff;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag.green {
+            background: rgba(5,150,105,0.08);
+            border-color: rgba(5,150,105,0.3);
+            color: var(--primary);
+        }
+
+        /* ─── FLOW DIAGRAM ─── */
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+            flex: 1;
+            min-width: 90px;
+        }
+
+        .flow-arrow {
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 0 6px;
+            font-weight: 700;
+        }
+
+        /* ─── CHECKLIST ─── */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.84rem;
+        }
+
+        .checklist li:last-child { border-bottom: none; }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: rgba(5,150,105,0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .check-text strong {
+            display: block;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .check-text span {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        /* ─── TWO-COL LAYOUT ─── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        /* ─── TABLE ─── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            padding: 9px 12px;
+            text-align: left;
+            font-family: var(--heading);
+            font-weight: 600;
+            font-size: 0.76rem;
+        }
+
+        td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) td { background: var(--bg-light); }
+
+        td strong { color: var(--text); font-weight: 600; }
+        td .pass { color: var(--primary); font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn no-print" onclick="window.print()">⬇ Save as PDF</button>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 1: COVER                              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page cover-page">
+    <div class="cover-logo">&lt;/&gt; FlyRank<span class="dot">.</span></div>
+
+    <div class="cover-badge">General AI Fluency · Week 6 Capstone</div>
+
+    <h1 class="cover-title">
+        Master the AI Stack.<br>
+        <span>Build. Brand. Ship.</span>
+    </h1>
+
+    <p class="cover-subtitle">
+        A professional capstone demonstrating end-to-end AI engineering:<br>
+        personal brand website + autonomous research agent.
+    </p>
+
+    <div class="cover-meta-grid">
+        <div class="cover-meta-item">
+            <div class="meta-label">Track</div>
+            <div class="meta-value">General AI Fluency</div>
+        </div>
+        <div class="cover-meta-item">
+            <div class="meta-label">Type</div>
+            <div class="meta-value">Capstone Project</div>
+        </div>
+        <div class="cover-meta-item">
+            <div class="meta-label">Week</div>
+            <div class="meta-value">Week 6</div>
+        </div>
+        <div class="cover-meta-item">
+            <div class="meta-label">Workload</div>
+            <div class="meta-value">12 Hours</div>
+        </div>
+    </div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-author">ABDUL SAMI UTHWAL</div>
+    <div class="cover-email">abdulsamiuthwal@gmail.com · FlyRank Intern</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 2: PERSONAL BRAND & WEBSITE           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+    <div class="page-accent-bar"></div>
+
+    <div class="section-eyebrow">Deliverable 01 — Personal Brand</div>
+    <h2 class="section-title">Live Portfolio Website</h2>
+    <p class="section-lead">
+        A proof-first personal brand website engineered for fast-growing teams and technical recruiters.
+        Every section maps directly to a verifiable claim backed by quantifiable outcomes.
+    </p>
+
+    <!-- Live URLs - Detailed -->
+    <div class="url-block">
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%">
+            <div style="display:flex; align-items:center; gap:12px">
+                <span class="url-label" style="white-space:nowrap">🌐 Portfolio Live</span>
+                <span class="url-text">https://abdulsamiuthwal-portfolio.vercel.app/</span>
+            </div>
+            <div style="font-size:0.7rem; color:#9ca3af; padding-left:0">Personal brand website — deployed on Vercel. Includes Hero, Case Studies, About & Contact sections.</div>
+        </div>
+    </div>
+    <div class="url-block">
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%">
+            <div style="display:flex; align-items:center; gap:12px">
+                <span class="url-label" style="white-space:nowrap">📁 Project Root</span>
+                <span class="url-text">c:/Users/abdul/Desktop/FlyRank_Portfolio/</span>
+            </div>
+            <div style="font-size:0.7rem; color:#9ca3af">Local project directory — contains all source files: index.html, styles.css, app.js</div>
+        </div>
+    </div>
+    <div class="url-block">
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%">
+            <div style="display:flex; align-items:center; gap:12px">
+                <span class="url-label" style="white-space:nowrap">🤖 Agent File</span>
+                <span class="url-text">c:/Users/abdul/Desktop/FlyRank_Portfolio/work/agent/research_scout.py</span>
+            </div>
+            <div style="font-size:0.7rem; color:#9ca3af">ResearchScout autonomous agent — live arXiv API + filesystem tools. Run: python research_scout.py 2312.00752</div>
+        </div>
+    </div>
+    <div class="url-block">
+        <div style="display:flex; flex-direction:column; gap:4px; width:100%">
+            <div style="display:flex; align-items:center; gap:12px">
+                <span class="url-label" style="white-space:nowrap">📄 Agent Output</span>
+                <span class="url-text">c:/Users/abdul/Desktop/FlyRank_Portfolio/work/outputs/research_briefs/arxiv_2312_00752v2_brief.md</span>
+            </div>
+            <div style="font-size:0.7rem; color:#9ca3af">Verified agent execution receipt — 3,352 byte Mamba paper brief generated autonomously in ~2 seconds</div>
+        </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics-row">
+        <div class="metric-box">
+            <div class="metric-number">60%</div>
+            <div class="metric-label">Operational Friction Reduction Claim</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">14</div>
+            <div class="metric-label">Days Average Time-to-Value</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">100%</div>
+            <div class="metric-label">Verifiable Output</div>
+        </div>
+    </div>
+
+    <!-- Website Structure -->
+    <div class="two-col">
+        <div class="card">
+            <div class="card-title"><span class="icon">🏠</span> Hero Section</div>
+            <ul>
+                <li>Bold claim-first headline</li>
+                <li>3 measurable metric cards</li>
+                <li>Primary CTA buttons</li>
+                <li>Animated badge indicator</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="icon">💼</span> Work / Proof</div>
+            <ul>
+                <li>3 case study cards</li>
+                <li>Live metric badges per project</li>
+                <li>Tech stack tags</li>
+                <li>Hover animations</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="card">
+        <div class="card-title"><span class="icon">⚙</span> Technology Stack</div>
+        <div class="tag-row">
+            <span class="tag green">HTML5</span>
+            <span class="tag green">Vanilla CSS</span>
+            <span class="tag green">JavaScript</span>
+            <span class="tag">Vercel Deploy</span>
+            <span class="tag">Google Fonts</span>
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Glassmorphism</span>
+            <span class="tag">Responsive Design</span>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>FlyRank General AI Fluency · Week 6 Capstone · ABDUL SAMI UTHWAL</span>
+        <span class="page-number">Page 2 of 4</span>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 3: RESEARCHSCOUT AGENT                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+    <div class="page-accent-bar"></div>
+
+    <div class="section-eyebrow">Deliverable 02 — Personal Agent</div>
+    <h2 class="section-title">ResearchScout Agent</h2>
+    <p class="section-lead">
+        An autonomous AI research assistant that monitors AI/ML literature on arXiv,
+        synthesizes papers into structured engineering briefs, and persists output to the local filesystem —
+        fully end-to-end without any manual intervention.
+    </p>
+
+    <!-- File path -->
+    <div class="url-block">
+        <span class="url-label">Agent File</span>
+        <span class="url-text">c:/Users/abdul/Desktop/FlyRank_Portfolio/work/agent/research_scout.py</span>
+    </div>
+
+    <!-- Agent Flow -->
+    <div class="flow">
+        <div class="flow-step">Input<br><small>arXiv ID / Topic</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Tool 1<br><small>Fetch arXiv API</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Core Job<br><small>Synthesize Brief</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Tool 2<br><small>Save to File</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Output<br><small>.md Brief</small></div>
+    </div>
+
+    <!-- Live Tools -->
+    <div class="two-col">
+        <div class="card">
+            <div class="card-title"><span class="icon">🌐</span> Live Tool 1 — arXiv API</div>
+            <ul>
+                <li>HTTP GET to arXiv REST API</li>
+                <li>Atom XML parsing (ElementTree)</li>
+                <li>Extracts: title, authors, abstract, date</li>
+                <li>Supports ID lookup &amp; topic search</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="icon">💾</span> Live Tool 2 — Filesystem IO</div>
+            <ul>
+                <li>Writes structured Markdown brief</li>
+                <li>UTF-8 encoding (Windows safe)</li>
+                <li>Auto-creates output directory</li>
+                <li>Timestamped filename per paper</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Proof of Execution -->
+    <div class="card">
+        <div class="card-title"><span class="icon">✅</span> Verified End-to-End Execution Receipt</div>
+        <table style="margin-top:10px; margin-bottom:0;">
+            <tr>
+                <th>Test Target</th>
+                <th>Result</th>
+                <th>Output</th>
+            </tr>
+            <tr>
+                <td><strong>arXiv 2312.00752</strong><br><small>Mamba: Linear-Time Sequence Modeling</small></td>
+                <td><span class="pass">✓ PASS</span><br><small>~2 seconds runtime</small></td>
+                <td><strong>3,352 bytes</strong><br><small>arxiv_2312_00752v2_brief.md</small></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tag-row">
+        <span class="tag green">Python 3.11</span>
+        <span class="tag green">arXiv REST API</span>
+        <span class="tag green">xml.etree</span>
+        <span class="tag">urllib</span>
+        <span class="tag">Filesystem IO</span>
+        <span class="tag">No external deps</span>
+        <span class="tag">CLI Interface</span>
+    </div>
+
+    <div class="page-footer">
+        <span>FlyRank General AI Fluency · Week 6 Capstone · ABDUL SAMI UTHWAL</span>
+        <span class="page-number">Page 3 of 4</span>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 4: AI STACK MASTERY & CHECKLIST       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+    <div class="page-accent-bar"></div>
+
+    <div class="section-eyebrow">Summary — 6-Week AI Engineering Sprint</div>
+    <h2 class="section-title">AI Stack Mastery Evidence</h2>
+    <p class="section-lead">
+        A complete 6-week structured sprint covering ML problem framing, data engineering,
+        model training, validation auditing, agent development, and personal branding.
+    </p>
+
+    <!-- Weekly Progress Table -->
+    <table>
+        <tr>
+            <th>Week</th>
+            <th>Module</th>
+            <th>Key Deliverable</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><strong>W01</strong></td>
+            <td>Portfolio Foundation</td>
+            <td>Live portfolio website deployed on Vercel</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+        <tr>
+            <td><strong>W02</strong></td>
+            <td>ML Task Framing</td>
+            <td>CTR opportunity signal definition &amp; feature design</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+        <tr>
+            <td><strong>W03</strong></td>
+            <td>Data Contract</td>
+            <td>Schema design, quality checks, feature engineering</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+        <tr>
+            <td><strong>W04</strong></td>
+            <td>Baseline Score</td>
+            <td>Baseline model — baseline_action_score.csv generated</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+        <tr>
+            <td><strong>W05</strong></td>
+            <td>Model Build</td>
+            <td>Gradient Boosting model — ROC-AUC: 0.995</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+        <tr>
+            <td><strong>W06</strong></td>
+            <td>Validation Audit</td>
+            <td>Honest domain-grouped split — F1: 0.783, AUC: 0.983</td>
+            <td><span class="pass">✓ Done</span></td>
+        </tr>
+    </table>
+
+    <!-- Final Metrics -->
+    <div class="metrics-row">
+        <div class="metric-box">
+            <div class="metric-number">0.983</div>
+            <div class="metric-label">Final ROC-AUC (Honest Split)</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">0.783</div>
+            <div class="metric-label">Final F1-Score (Domain Grouped)</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">2s</div>
+            <div class="metric-label">Agent End-to-End Runtime</div>
+        </div>
+    </div>
+
+    <!-- Capstone Checklist -->
+    <ul class="checklist">
+        <li>
+            <div class="check-icon">✓</div>
+            <div class="check-text">
+                <strong>Personal Brand Website — Live &amp; Deployed</strong>
+                <span>https://abdulsamiuthwal-portfolio.vercel.app/ — Emerald &amp; Amber editorial design, 4-section single-page portfolio</span>
+            </div>
+        </li>
+        <li>
+            <div class="check-icon">✓</div>
+            <div class="check-text">
+                <strong>Personal Agent — Shipped &amp; Verified</strong>
+                <span>ResearchScout Agent — 2 live tools (arXiv API + filesystem), end-to-end autonomous execution verified on Mamba paper</span>
+            </div>
+        </li>
+        <li>
+            <div class="check-icon">✓</div>
+            <div class="check-text">
+                <strong>AI Stack Mastered — 6 Weeks of Structured Evidence</strong>
+                <span>ML pipeline (W02–W06), honest validation audit, claim rewriting, agent build log with iteration notes</span>
+            </div>
+        </li>
+        <li>
+            <div class="check-icon">✓</div>
+            <div class="check-text">
+                <strong>Receipts Committed — All Outputs Verifiable</strong>
+                <span>w06_audit_metrics.json, baseline_metrics.json, arxiv_2312_00752v2_brief.md — all generated artifacts persisted</span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="page-footer">
+        <span>FlyRank General AI Fluency · Week 6 Capstone · ABDUL SAMI UTHWAL · abdulsamiuthwal@gmail.com</span>
+        <span class="page-number">Page 4 of 4</span>
+    </div>
+</div>
+
+</body>
+</html>
