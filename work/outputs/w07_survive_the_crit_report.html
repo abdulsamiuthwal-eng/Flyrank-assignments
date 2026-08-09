@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyRank Week 7 — Survive the Crit Review Report | ABDUL SAMI UTHWAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --secondary: #d97706;
+            --accent: #0f766e;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --bg-light: #f8faf9;
+            --heading: 'Plus Jakarta Sans', sans-serif;
+            --body: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            font-family: var(--body);
+            color: var(--text);
+            background: #f3f4f6;
+            padding: 20px 0;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px auto;
+            padding: 18mm 20mm;
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            position: relative;
+            page-break-after: always;
+        }
+
+        .no-print-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .btn-pdf {
+            background: var(--primary);
+            color: #fff;
+            font-family: var(--heading);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-pdf:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--primary);
+            font-family: var(--heading);
+            font-weight: 700;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-family: var(--heading);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .meta-box {
+            text-align: right;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .meta-box strong {
+            color: var(--text);
+            font-family: var(--heading);
+        }
+
+        .proof-callout {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+
+        .proof-title {
+            font-family: var(--heading);
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .proof-text {
+            font-size: 13px;
+            color: #1f2937;
+            font-style: italic;
+        }
+
+        .section-title {
+            font-family: var(--heading);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin: 20px 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p { font-size: 13px; color: #374151; margin-bottom: 12px; }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 14px;
+        }
+
+        .q-title {
+            font-family: var(--heading);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .q-response {
+            font-size: 12.5px;
+            color: #4b5563;
+            background: #f9fafb;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background: rgba(5, 150, 105, 0.08);
+            color: var(--primary-dark);
+            font-family: var(--heading);
+            font-weight: 700;
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) { background: #fafafa; }
+
+        .badge-must {
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .badge-nice {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 700;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .badge-fixed {
+            background: #d1fae5;
+            color: #065f46;
+            font-weight: 700;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .doc-footer {
+            position: absolute;
+            bottom: 12mm;
+            left: 20mm;
+            right: 20mm;
+            border-top: 1px solid var(--border);
+            padding-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .no-print-bar { display: none; }
+            .page { box-shadow: none; margin: 0; width: 100%; min-height: auto; padding: 15mm; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <button class="btn-pdf" onclick="window.print()">
+            <span>⬇ Save as PDF</span>
+        </button>
+    </div>
+
+    <!-- PAGE 1: CRIT REVIEW REPORT -->
+    <div class="page">
+        <div class="header">
+            <div>
+                <span class="brand-badge">FlyRank Machine Learning Internship</span>
+                <h1>Survive the Crit — Review Report</h1>
+                <div class="subtitle">Assignment: Structured Peer & Mentor Design Review Response</div>
+            </div>
+            <div class="meta-box">
+                <div>Author: <strong>ABDUL SAMI UTHWAL</strong></div>
+                <div>Track: <strong>General AI Fluency</strong></div>
+                <div>Phase: <strong>Build+ (Week 7)</strong></div>
+                <div>Date: <strong>August 2026</strong></div>
+            </div>
+        </div>
+
+        <div class="proof-callout">
+            <div class="proof-title">Chapter 1 Proof Statement (Evaluated Baseline)</div>
+            <div class="proof-text">
+                "Building production-ready ML systems & intelligent web applications — from model training and fine-tuning to full-stack deployment. Specializing in Computer Vision, NLP, and LLM-powered solutions."<br>
+                <strong>Measurable Proof Claims:</strong> 60% operational efficiency boost, 14-day sprint delivery, 100% verifiable ML metrics.
+            </div>
+        </div>
+
+        <div class="section-title">⏱️ 10-Second Test & Proof Credibility Check</div>
+
+        <div class="question-card">
+            <div class="q-title">Q1: In ten seconds, what do I do?</div>
+            <div class="q-response">
+                <strong>Reviewer Answer:</strong> "You are an AI/ML Engineer and Full-Stack Developer operating globally from Pakistan who builds production ML pipelines and intelligent web applications."<br>
+                <strong>Result:</strong> <span class="badge-fixed">PASS</span> — 100% clarity established in top-fold header.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="q-title">Q2: Would you believe I'm good at it?</div>
+            <div class="q-response">
+                <strong>Reviewer Answer:</strong> "Yes. The 3 featured AI case studies (Vigilant Eye, ScholarAI, AuraSentiment) with direct GitHub repositories, live Vercel/HuggingFace demos, and measurable impact metrics (99.2% accuracy, 2.3s latency) provide strong credibility."<br>
+                <strong>Result:</strong> <span class="badge-fixed">PASS</span> — Proof statement supported by tangible artifacts.
+            </div>
+        </div>
+
+        <div class="section-title">📊 Feedback Sorting: Must-Fix vs. Nice-To-Have</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Category</th>
+                    <th style="width: 35%;">Reviewer Feedback / Identified Gap</th>
+                    <th style="width: 35%;">Action Taken & Resolution on Live Site</th>
+                    <th style="width: 15%;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge-must">MUST-FIX</span></td>
+                    <td>Project card GitHub buttons redirected to main profile instead of direct project repositories.</td>
+                    <td>Updated all 5 project card anchors directly to dedicated repository paths.</td>
+                    <td><span class="badge-fixed">FIXED (LIVE)</span></td>
+                </tr>
+                <tr>
+                    <td><span class="badge-must">MUST-FIX</span></td>
+                    <td>Mobile tap targets for footer social links and hamburger menu were under 44px height.</td>
+                    <td>Expanded touch padding around all icons and toggles to meet 44px WCAG standards.</td>
+                    <td><span class="badge-fixed">FIXED (LIVE)</span></td>
+                </tr>
+                <tr>
+                    <td><span class="badge-must">MUST-FIX</span></td>
+                    <td>Render cold-start delay on Dental AI Assistant live demo could cause reviewer confusion.</td>
+                    <td>Added explicit status badges & cold-start load indicators for transparent UX.</td>
+                    <td><span class="badge-fixed">FIXED (LIVE)</span></td>
+                </tr>
+                <tr>
+                    <td><span class="badge-nice">NICE-TO-HAVE</span></td>
+                    <td>Option for dark mode toggle for nighttime reading preference.</td>
+                    <td>Logged for post-bootcamp v2 feature enhancement roadmap.</td>
+                    <td><span>LOGGED (V2)</span></td>
+                </tr>
+                <tr>
+                    <td><span class="badge-nice">NICE-TO-HAVE</span></td>
+                    <td>Embedded live demo iframe preview directly inside project modal.</td>
+                    <td>Logged for future interactive portfolio iteration.</td>
+                    <td><span>LOGGED (V2)</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="doc-footer">
+            <span>FlyRank General AI Fluency Track — Week 7 Survive the Crit</span>
+            <span>ABDUL SAMI UTHWAL</span>
+            <span>Page 1 of 1</span>
+        </div>
+    </div>
+
+</body>
+</html>

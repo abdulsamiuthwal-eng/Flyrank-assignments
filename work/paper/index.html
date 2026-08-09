@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyRank Capstone Research Paper — Search CTR Opportunity Scoring Engine | ABDUL SAMI UTHWAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --secondary: #d97706;
+            --accent: #0f766e;
+            --text-dark: #111827;
+            --text-body: #374151;
+            --text-muted: #6b7280;
+            --bg-paper: #ffffff;
+            --bg-page: #f8faf9;
+            --border-light: #e5e7eb;
+            --border-dark: #d1d5db;
+            --font-serif: 'Merriweather', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'Space Grotesk', monospace;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            color: var(--text-body);
+            background: var(--bg-page);
+            line-height: 1.8;
+            font-size: 16px;
+            padding: 40px 20px;
+        }
+
+        /* ─── CONTAINER ─── */
+        .paper-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-paper);
+            padding: 60px 70px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        /* ─── HEADER & TITLE ─── */
+        .paper-header {
+            text-align: center;
+            border-bottom: 2px solid var(--text-dark);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .paper-tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            background: rgba(5, 150, 105, 0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        h1.paper-title {
+            font-family: var(--font-sans);
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .author-block {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* ─── ABSTRACT BOX ─── */
+        .abstract-box {
+            background: rgba(5, 150, 105, 0.04);
+            border-left: 4px solid var(--primary);
+            padding: 24px 28px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 45px;
+        }
+
+        .abstract-label {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .abstract-content {
+            font-size: 15px;
+            color: #1f2937;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ─── SECTIONS ─── */
+        h2.section-heading {
+            font-family: var(--font-sans);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 40px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3.subsection-heading {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 24px 0 10px 0;
+        }
+
+        p { margin-bottom: 18px; text-align: justify; }
+
+        ul, ol { margin: 0 0 20px 24px; font-size: 15px; }
+        li { margin-bottom: 8px; }
+
+        /* ─── TABLES ─── */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        table.paper-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+        }
+
+        table.paper-table th {
+            background: #f3f4f6;
+            color: var(--text-dark);
+            font-weight: 700;
+            text-align: left;
+            padding: 12px 14px;
+            border-top: 2px solid var(--text-dark);
+            border-bottom: 2px solid var(--text-dark);
+        }
+
+        table.paper-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+        }
+
+        table.paper-table tr:last-child td {
+            border-bottom: 2px solid var(--text-dark);
+        }
+
+        .highlight-row {
+            background: rgba(5, 150, 105, 0.06) !important;
+            font-weight: 600;
+        }
+
+        /* ─── CODE & MATH ─── */
+        .math-block {
+            background: #f9fafb;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 16px 20px;
+            font-family: var(--font-code);
+            font-size: 14px;
+            color: var(--text-dark);
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        /* ─── CHARTS & FIGURES ─── */
+        .figure-box {
+            margin: 35px 0;
+            text-align: center;
+        }
+
+        .figure-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .figure-caption {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* ─── ACKNOWLEDGMENTS & CREDIT ─── */
+        .acknowledgment-box {
+            background: #f8faf9;
+            border: 1px dashed var(--primary);
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-top: 45px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+        }
+
+        .acknowledgment-box a {
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* ─── PRINT OPTIMIZATION ─── */
+        @media print {
+            body { background: #fff; padding: 0; }
+            .paper-container { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; }
+        }
+
+        @media (max-width: 640px) {
+            .paper-container { padding: 30px 20px; }
+            h1.paper-title { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper-container">
+        
+        <!-- HEADER -->
+        <header class="paper-header">
+            <span class="paper-tag">FlyRank ML Capstone Research Paper — ML-11</span>
+            <h1 class="paper-title">Search CTR Opportunity Scoring: Predicting Under-Capturing Landing Pages via Domain-Grouped Gradient Boosting</h1>
+            <div class="author-block">
+                <span class="author-name">Abdul Sami Uthwal</span>
+                <span>•</span>
+                <span>FlyRank Machine Learning Track</span>
+                <span>•</span>
+                <span>August 2026</span>
+            </div>
+        </header>
+
+        <!-- ABSTRACT (REQUIRED SECTION 1) -->
+        <section class="abstract-box">
+            <div class="abstract-label">Abstract</div>
+            <div class="abstract-content">
+                High-visibility organic search pages frequently under-capture expected click-through rates (CTR), creating undetected traffic loss across commercial landing page portfolios. We present an end-to-end Machine Learning pipeline designed to predict CTR opportunity gaps across 600 search landing pages clustered across 15 domain environments. Using a non-linear target formulation combining top-rank impressions with expected-versus-actual CTR gaps, we benchmark four machine learning models against a traditional heuristic baseline. Our champion Gradient Boosting model achieves an ROC-AUC of 0.983 and an F1-Score of 0.783 under strict 5-fold GroupKFold validation, confirming zero cross-domain leakage. We translate continuous probability outputs into a 3-tier actionable content review playbook with machine-generated reason codes, providing content teams with a directional decision-support framework.
+            </div>
+        </section>
+
+        <!-- INTRODUCTION (REQUIRED SECTION 2) -->
+        <section>
+            <h2 class="section-heading">1. Introduction & Problem Statement</h2>
+            <p>
+                In modern Search Engine Optimization (SEO) and Search Intelligence, ranking on Page 1 of Search Engine Results Pages (SERPs) is only half the battle. A significant portion of organic traffic loss stems not from ranking drops, but from <strong>CTR under-performance</strong> — pages that occupy prime search real estate (positions 1–10) but fail to capture expected click volume due to stale content, weak title tags, or poor meta descriptions.
+            </p>
+            <p>
+                Manual inspection of thousands of enterprise landing pages is unfeasible. Traditional heuristic rules (e.g., flagging any page with CTR &lt; 3%) produce high false-positive rates because they fail to account for position-dependent CTR decay curves, content freshness, or domain-level traffic authority.
+            </p>
+            <p>
+                <strong>Supported Decision:</strong> This research provides a validated machine learning model that surfaces high-signal CTR opportunity pages, prioritising editorial review hours toward landing pages where meta updates or content refreshes yield the highest directional ROI.
+            </p>
+        </section>
+
+        <!-- DATA (REQUIRED SECTION 3) -->
+        <section>
+            <h2 class="section-heading">2. Data Release & Feature Engineering</h2>
+            <p>
+                This work is built on the public-safe <strong>FlyRank Search Intelligence Release</strong>. To ensure complete privacy and compliance, all domain names, URLs, and search query strings are anonymised into synthetic domain clusters.
+            </p>
+            <div class="table-wrapper">
+                <table class="paper-table">
+                    <thead>
+                        <tr>
+                            <th>Feature Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Excluded / Inclusion Rationale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>past_impressions_30d</code></td>
+                            <td>Integer</td>
+                            <td>30-day cumulative organic impressions</td>
+                            <td>Included (Primary scale indicator)</td>
+                        </tr>
+                        <tr>
+                            <td><code>historical_avg_position</code></td>
+                            <td>Float</td>
+                            <td>Average Google SERP ranking position</td>
+                            <td>Included (Determines expected CTR curve)</td>
+                        </tr>
+                        <tr>
+                            <td><code>historical_ctr</code></td>
+                            <td>Float</td>
+                            <td>Observed historical click-through rate</td>
+                            <td>Included (Direct signal)</td>
+                        </tr>
+                        <tr>
+                            <td><code>content_word_count</code></td>
+                            <td>Integer</td>
+                            <td>Total body copy word count</td>
+                            <td>Included (Content depth proxy)</td>
+                        </tr>
+                        <tr>
+                            <td><code>days_since_last_update</code></td>
+                            <td>Integer</td>
+                            <td>Days elapsed since last content modification</td>
+                            <td>Included (Content decay proxy)</td>
+                        </tr>
+                        <tr>
+                            <td><code>private_query_terms</code></td>
+                            <td>Text</td>
+                            <td>Raw search query terms & client identifiers</td>
+                            <td><strong>Excluded (Privacy & non-leakage rule)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY (REQUIRED SECTION 4) -->
+        <section>
+            <h2 class="section-heading">3. Methodology & Validation Design</h2>
+            <p>
+                We formulate the problem as a binary classification task. The expected CTR curve is modelled as a log-decay function of position:
+            </p>
+            <div class="math-block">
+                $$\text{Expected CTR} = \frac{0.08}{\log_2(\text{avg\_position} + 1.0)}$$<br>
+                $$\text{CTR Gap} = \max(0, \text{Expected CTR} - \text{Historical CTR})$$<br>
+                $$\text{Target Label } y = \mathbf{1}\left( \text{impressions}_{30d} > 2500 \quad \land \quad \text{CTR Gap} > 0.015 \right)$$
+            </div>
+
+            <h3 class="subsection-heading">3.1 Leakage-Free Validation Design</h3>
+            <p>
+                A common pitfall in search data modeling is <em>cross-domain leakage</em>, where pages from the same website domain appear in both training and test sets. To guarantee honest evaluation, we implement <strong>5-Fold GroupKFold Cross-Validation</strong>, grouping by `domain`. This ensures that entire domain clusters are held out during evaluation.
+            </p>
+        </section>
+
+        <!-- RESULTS (REQUIRED SECTION 5) -->
+        <section>
+            <h2 class="section-heading">4. Experimental Results & Benchmarking</h2>
+            <p>
+                We evaluate four machine learning architectures against a traditional heuristic baseline. Models are assessed on Accuracy, Precision, Recall, F1-Score, and ROC-AUC under identical train/test splits.
+            </p>
+
+            <div class="table-wrapper">
+                <table class="paper-table">
+                    <thead>
+                        <tr>
+                            <th>Model Architecture</th>
+                            <th>Accuracy</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>F1-Score</th>
+                            <th>ROC-AUC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Heuristic Baseline Rule</td>
+                            <td>0.9133</td>
+                            <td>0.6000</td>
+                            <td>0.4000</td>
+                            <td>0.4800</td>
+                            <td>0.8909</td>
+                        </tr>
+                        <tr>
+                            <td>Logistic Regression</td>
+                            <td>0.8933</td>
+                            <td>0.4286</td>
+                            <td>0.2000</td>
+                            <td>0.2727</td>
+                            <td>0.8494</td>
+                        </tr>
+                        <tr>
+                            <td>Decision Tree (depth=4)</td>
+                            <td>0.9333</td>
+                            <td>0.7778</td>
+                            <td>0.4667</td>
+                            <td>0.5833</td>
+                            <td>0.9390</td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest (n=100)</td>
+                            <td>0.9400</td>
+                            <td>0.8750</td>
+                            <td>0.4667</td>
+                            <td>0.6087</td>
+                            <td>0.9723</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Gradient Boosting (Champion)</strong></td>
+                            <td><strong>0.9533</strong></td>
+                            <td><strong>0.7857</strong></td>
+                            <td><strong>0.7333</strong></td>
+                            <td><strong>0.7586</strong></td>
+                            <td><strong>0.9827</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-heading">4.1 GroupKFold Leakage Audit</h3>
+            <p>
+                Under 5-Fold GroupKFold validation, the Gradient Boosting model achieved a mean F1-Score of <strong>0.7833</strong> and ROC-AUC of <strong>0.9830</strong>. The negligible difference between random split F1 and GroupKFold F1 confirms zero domain leakage.
+            </p>
+
+            <div class="figure-box">
+                <img src="../figures/w07_tier_distribution.png" alt="Action Tier Distribution & Score Histogram">
+                <div class="figure-caption">Figure 1: Opportunity Score Distribution and 3-Tier Action Classification generated by Champion Model.</div>
+            </div>
+            
+            <div class="figure-box">
+                <img src="../figures/w07_archetype_decay.png" alt="Archetype & Decay Analysis">
+                <div class="figure-caption">Figure 2: Content Archetype Breakdown (Left) and Content Age vs Average Opportunity Score (Right).</div>
+            </div>
+        </section>
+
+        <!-- LIMITATIONS (REQUIRED SECTION 6) -->
+        <section>
+            <h2 class="section-heading">5. Limitations & Honest Claim Framing</h2>
+            <p>
+                In accordance with rigorous research standards, we state the following bounds:
+            </p>
+            <ul>
+                <li><strong>Directional Signal Only:</strong> A high opportunity score indicates a high-probability CTR gap candidate — it does <em>not</em> guarantee causal traffic increase upon modification.</li>
+                <li><strong>No Query Intent Features:</strong> SERP layout dynamics (e.g., presence of Featured Snippets or AI Overviews) are not currently incorporated into the expected CTR curve.</li>
+                <li><strong>Synthetic Dataset Context:</strong> The model is evaluated on simulated search telemetry matching FlyRank distribution profiles, not live production client telemetry.</li>
+            </ul>
+        </section>
+
+        <!-- RANKED RECOMMENDATIONS (REQUIRED SECTION 7) -->
+        <section>
+            <h2 class="section-heading">6. Ranked Recommendations & Action Playbook</h2>
+            <p>
+                Continuous probability scores are mapped into a 3-tier action playbook to guide editorial workflows:
+            </p>
+
+            <div class="table-wrapper">
+                <table class="paper-table">
+                    <thead>
+                        <tr>
+                            <th>Action Tier</th>
+                            <th>Score Threshold</th>
+                            <th>Prescribed Action</th>
+                            <th>Reason Code Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🔴 <strong>PRIORITY_REVIEW</strong></td>
+                            <td>&ge; 0.70</td>
+                            <td>Immediate content + metadata audit within 7 days</td>
+                            <td><code>HIGH_IMPRESSION_VOLUME | LARGE_CTR_GAP</code></td>
+                        </tr>
+                        <tr>
+                            <td>🟡 <strong>SCHEDULED_WATCH</strong></td>
+                            <td>0.40 – 0.69</td>
+                            <td>Queue for next content sprint (within 30 days)</td>
+                            <td><code>MODERATE_CTR_GAP | CONTENT_AGING_90D</code></td>
+                        </tr>
+                        <tr>
+                            <td>🟢 <strong>MONITOR_ONLY</strong></td>
+                            <td>&lt; 0.40</td>
+                            <td>Log signal; no action unless trend degrades</td>
+                            <td><code>LOW_COMPOSITE_SIGNAL</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-heading">6.1 Mandatory Human-Review Gate (No-Go Cases)</h3>
+            <p>
+                Automation is strictly prohibited for: (1) Core Homepage / Brand Pages, (2) Pages with &lt; 200 impressions, (3) Newly published content (&lt; 30 days old), and (4) E-A-T sensitive medical or legal content.
+            </p>
+        </section>
+
+        <!-- REPRODUCIBILITY (REQUIRED SECTION 8) -->
+        <section>
+            <h2 class="section-heading">7. Reproducibility & Artifacts</h2>
+            <p>
+                All code, notebooks, JSON receipts, and generated figures are version-controlled and publicly accessible:
+            </p>
+            <ul>
+                <li><strong>GitHub Repository:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments" target="_blank">abdulsamiuthwal-eng/Flyrank-assignments</a></li>
+                <li><strong>Capstone Notebook:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/work/notebooks/capstone.ipynb" target="_blank">work/notebooks/capstone.ipynb</a></li>
+                <li><strong>Action Playbook Notebook:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/work/notebooks/w07_action_playbook.ipynb" target="_blank">work/notebooks/w07_action_playbook.ipynb</a></li>
+                <li><strong>Metrics Receipt:</strong> <code>work/outputs/capstone_metrics.json</code></li>
+            </ul>
+        </section>
+
+        <!-- ACKNOWLEDGMENTS & DATA CREDIT (REQUIRED SECTION 9) -->
+        <section class="acknowledgment-box">
+            <h3 style="font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px;">8. Acknowledgments & Data Credit</h3>
+            <p style="margin-bottom: 0; font-size: 14px;">
+                This research paper and underlying predictive model were <strong>Built on the FlyRank ML Internship dataset</strong> — available at <a href="https://flyrank.ai" target="_blank">https://flyrank.ai</a>. We express gratitude to FlyRank for providing the search intelligence dataset and evaluation frameworks.
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>

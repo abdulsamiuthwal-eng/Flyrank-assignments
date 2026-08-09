@@ -1,0 +1,15 @@
+{
+  "project": "FlyRank ML Capstone",
+  "author": "Abdul Sami Uthwal",
+  "total_pages": 600,
+  "champion_model": "GradientBoostingClassifier",
+  "random_split_f1": 0.7857,
+  "groupkfold_f1": 0.8134,
+  "leakage_delta": -0.0277,
+  "tier_counts": {
+    "MONITOR_ONLY": 549,
+    "PRIORITY_REVIEW": 49,
+    "SCHEDULED_WATCH": 2
+  },
+  "data_credit": "Built on the FlyRank ML Internship dataset \u2014 https://flyrank.ai"
+}
