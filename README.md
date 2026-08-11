@@ -1,22 +1,30 @@
-# FlyRank AI Systems & Machine Learning Portfolio
-### End-to-End AI Engineering, Autonomous Literature Research Agent & Search Optimization
+<!-- Animated Typing Banner Header -->
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=24&duration=3000&pause=1000&color=059669&center=true&vCenter=true&width=750&lines=Abdul+Sami+Uthwal+%E2%80%94+AI+Systems+%26+ML+Engineer;FlyRank+Verified+Graduate+%E2%80%94+Machine+Learning+Track;Autonomous+AI+Agents+%2B+GroupKFold+CTR+Optimization" alt="Typing SVG" />
+</div>
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-Web%20UI-000000?style=flat-square&logo=flask)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-Gradient%20Boosting-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-HTTPS%20Deployment-000000?style=flat-square&logo=vercel)
-![arXiv](https://img.shields.io/badge/arXiv-Live%20API-B31B1B?style=flat-square)
-![FlyRank](https://img.shields.io/badge/FlyRank-ML%20%26%20AI%20Fluency-059669?style=flat-square)
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web%20UI-000000?style=for-the-badge&logo=flask)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-Gradient%20Boosting-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-HTTPS%20Deployment-000000?style=for-the-badge&logo=vercel)
+![arXiv](https://img.shields.io/badge/arXiv-Live%20API-B31B1B?style=for-the-badge)
+![FlyRank](https://img.shields.io/badge/FlyRank-ML%20%26%20AI%20Fluency-059669?style=for-the-badge)
+
+[![System Status](https://img.shields.io/badge/%E2%97%8F_System_Status-Production_Live_%26_Verified-10b981?style=for-the-badge)](https://abdulsamiuthwal-portfolio.vercel.app/)
+
+</div>
 
 ---
 
 ## 📌 Executive Overview
 
-This repository represents the complete, production-verified portfolio of **Abdul Sami Uthwal** for the **FlyRank Internship (Machine Learning & General AI Fluency Tracks)**.
+Welcome to the official, production-verified AI Engineering & Machine Learning Portfolio of **Abdul Sami Uthwal** for the **FlyRank Internship (Machine Learning & General AI Fluency Tracks)**.
 
-It combines three production-grade AI systems:
+This repository unifies three production-grade AI systems:
 1. **Machine Learning CTR Opportunity Engine:** A GroupKFold domain-validated Gradient Boosting Classifier (**F1: 0.783, ROC-AUC: 0.983**) predicting search ranking engagement gaps across 600 landing pages.
-2. **ResearchScout Autonomous Agent:** An autonomous literature research agent that queries the live arXiv REST API, parses Atom XML, synthesises 5-section engineering briefs, and saves Markdown files in under 900ms.
+2. **ResearchScout Autonomous Agent:** An autonomous literature research agent querying the live arXiv REST API, parsing Atom XML, synthesising 5-section engineering briefs, and saving Markdown files in under 900ms.
 3. **Production Web Infrastructure:** A claim-first portfolio deployed on Vercel (`https://abdulsamiuthwal-portfolio.vercel.app/`) over HTTPS with Vercel Web Analytics, serverless Web3Forms lead capture, 98/100 PageSpeed score, and the official FlyRank Verified Graduate Badge.
 
 ---
@@ -135,47 +143,15 @@ Open browser at: `http://127.0.0.1:5000`
 
 ---
 
-## 📁 Repository Directory Structure
+## 🤝 Acknowledgments & Special Thanks
 
-```
-Flyrank-assignments/
-├── README.md                            # Comprehensive master documentation
-├── index.html                           # Production Vercel portfolio with SEO & badge
-├── styles.css                           # Design tokens & responsive styles
-├── app.js                              # Hardened contact form handler & debouncing
-├── generate_pdf.py                      # Playwright PDF compilation engine
-├── submission/                          # Submission artifacts & verification files
-│   ├── paper_url.txt                    # Mandatory Capstone deployed paper link
-│   ├── fl09_submission.md               # FL-09 portal notes & video script
-│   ├── w08_make_it_do_something_submission.*
-│   ├── w09_break_your_own_site_report.*
-│   ├── w09_plant_your_flag_submission.*
-│   ├── w09_the_plan_to_keep_building_submission.*
-│   └── w10_send_the_link_capstone_submission.*
-└── work/
-    ├── agent/                           # ResearchScout Agent & Web UI
-    │   ├── research_scout.py            # Core agent class (CLI entry point)
-    │   ├── web_app.py                   # Flask REST server
-    │   └── templates/index.html         # Premium Emerald & Amber Web UI
-    ├── notebooks/                       # Reproducible Jupyter Notebooks
-    │   ├── w02_ml_task_framing.ipynb
-    │   ├── w03_data_contract.ipynb
-    │   ├── w04_baseline_score.ipynb
-    │   ├── w05_model.ipynb
-    │   ├── w06_validation_audit.ipynb
-    │   ├── w07_action_playbook.ipynb
-    │   └── capstone.ipynb
-    ├── paper/                           # Deployed 10-page Research Paper
-    │   └── index.html
-    └── outputs/                         # Model metrics, briefs & figures
-```
+Special thanks to the **FlyRank AI** leadership and lead mentors for their exceptional guidance, architectural frameworks, and benchmark datasets throughout this internship:
 
----
+- **Mirza Ašćerić** *(Director of AI & Agent Orchestration)* — For Machine Learning track mentorship, CTR opportunity signal formulation, and GroupKFold validation design.
+- **Léo Yigit Ekiz & Eldin Pintol** *(Directors of AI Enablement)* — For General AI Fluency guidance, autonomous agent architecture patterns, and site hardening standards.
+- **Alen Malkoč & The FlyRank Engineering Team** — For providing the internship platform, mentorship, and dataset source.
 
-## 🔬 Reproducibility & Data Credit
-
-- **Notebook Execution:** All machine learning experiments, feature engineering pipelines, and validation audits are fully reproducible via the notebooks in `work/notebooks/`.
-- **Data Source Credit:** *"Built on the FlyRank ML Internship dataset"* — Data source credited to [FlyRank](https://flyrank.ai).
+*Built on the FlyRank ML Internship dataset — Data source credited to [FlyRank](https://flyrank.ai).*
 
 ---
 
