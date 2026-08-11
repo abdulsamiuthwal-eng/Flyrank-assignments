@@ -1,3 +1,4 @@
+<!-- Animated Typing Banner Header -->
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=24&duration=3000&pause=1000&color=059669&center=true&vCenter=true&width=750&lines=ABDUL+SAMI+UTHWAL+%E2%80%94+AI+Systems+%26+ML+Engineer;FlyRank+Verified+Graduate+%E2%80%94+Machine+Learning+Track;Autonomous+AI+Agents+%2B+GroupKFold+CTR+Optimization" alt="Typing SVG" />
 </div>
@@ -13,7 +14,18 @@
 
 [![System Status](https://img.shields.io/badge/%E2%97%8F_System_Status-Production_Live_%26_Verified-10b981?style=for-the-badge)](https://abdulsamiuthwal-portfolio.vercel.app/)
 
+<br/>
+
+<!-- Animated Tech Stack Icons -->
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=py,flask,sklearn,html,css,js,git,github,vercel,vscode&perline=10" alt="Tech Stack Icons" />
+  </a>
+</p>
+
 </div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
 
 ---
 
@@ -30,31 +42,50 @@ This repository unifies three production-grade AI systems:
 
 ## 📐 End-to-End System Architecture
 
+```mermaid
+graph TD
+    A[📱 User Interface / Web Client] -->|Search Query / arXiv ID| B[🐍 Flask REST API Server]
+    B -->|REST HTTP Request| C[📡 arXiv Atom XML API]
+    C -->|Sub-KB Metadata XML| D[⚙️ ResearchScout Engine]
+    D -->|xml.etree.ElementTree| E[📝 5-Section Markdown Brief Generator]
+    E -->|Fast I/O Persistence| F[💾 work/outputs/research_briefs]
+    
+    A -->|CTR Signal Input| G[🤖 scikit-learn Gradient Boosting Model]
+    G -->|GroupKFold Validation| H[📊 Tiered Content Action Playbook]
+    H -->|Protect / Rewrite / Merge| I[🚀 Deployed Vercel Production Site]
+
+    style A fill:#059669,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#3b82f6,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#f7931e,stroke:#333,stroke-width:2px,color:#fff
+    style I fill:#10b981,stroke:#333,stroke-width:2px,color:#fff
 ```
-                                 [USER INTERFACE LAYER]
-                    ┌──────────────────────────────────────────────┐
-                    │ Production Vercel Portfolio & Web UI         │
-                    │ https://abdulsamiuthwal-portfolio.vercel.app/ │
-                    └──────────────────────┬───────────────────────┘
-                                           │
-                        ┌──────────────────┴──────────────────┐
-                        ▼                                     ▼
-         ┌──────────────────────────────┐    ┌──────────────────────────────┐
-         │ SYSTEM 1: ML RANKING ENGINE  │    │ SYSTEM 2: RESEARCH SCOUT AGENT│
-         │ (sklearn Gradient Boosting)  │    │ (Python + arXiv REST API)    │
-         └──────────────┬───────────────┘    └──────────────┬───────────────┘
-                        │                                   │
-                        ▼                                   ▼
-         ┌──────────────────────────────┐    ┌──────────────────────────────┐
-         │ GroupKFold Validation Audit  │    │ Atom XML Parser Engine       │
-         │ F1: 0.783 | ROC-AUC: 0.983   │    │ xml.etree.ElementTree        │
-         └──────────────┬───────────────┘    └──────────────┬───────────────┘
-                        │                                   │
-                        ▼                                   ▼
-         ┌──────────────────────────────┐    ┌──────────────────────────────┐
-         │ Tiered Action Playbook       │    │ Local Filesystem Persistence │
-         │ (Protect / Rewrite / Merge) │    │ work/outputs/research_briefs │
-         └──────────────────────────────┘    └──────────────────────────────┘
+
+---
+
+## 💻 Autonomous Agent Terminal Demo
+
+```
+$ python work/agent/research_scout.py 2312.00752
+
+================================================================================
+ 🤖 RESEARCH SCOUT AGENT — AUTONOMOUS LITERATURE SYNTHESIS ENGINE
+================================================================================
+ [1/4] 📡 Connecting to live arXiv REST API...
+       URL: http://export.arxiv.org/api/query?id_list=2312.00752
+ [2/4] ⚡ Parsing Atom XML metadata feed via ElementTree...
+       Paper Title: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
+       Authors: Albert Gu, Tri Dao
+       Published: 2023-12-01 | Primary Category: cs.LG
+ [3/4] 📝 Synthesizing 5-Section Engineering Brief...
+       [Section 1] Paper Metadata & Core Abstract
+       [Section 2] Architectural Breakdown & Innovation
+       [Section 3] Key Empirical Benchmarks
+       [Section 4] Critical Limitations & Trade-offs
+       [Section 5] Practical Engineering Takeaways
+ [4/4] 💾 Saved brief to: work/outputs/research_briefs/arxiv_2312_00752v2_brief.md
+--------------------------------------------------------------------------------
+ ✅ Execution Completed in 842ms | Status: 200 OK
+================================================================================
 ```
 
 ---
