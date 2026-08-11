@@ -33,16 +33,12 @@
 
 <br/>
 
-<!-- Portfolio & Email Connect Icons Row (GitHub Link Removed) -->
-<p align="center">
-  <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">
-    <img src="https://skillicons.dev/icons?i=vercel" height="42" alt="Live Portfolio" title="ABDUL SAMI UTHWAL Live Portfolio" />
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="mailto:abdulsamiuthwal@gmail.com">
-    <img src="https://skillicons.dev/icons?i=gmail" height="42" alt="Email ABDUL SAMI UTHWAL" title="Email ABDUL SAMI UTHWAL" />
-  </a>
-</p>
+<!-- Portfolio & Email Connect Icons Row -->
+<div align="center">
+  <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank"><img src="https://skillicons.dev/icons?i=vercel" height="48" alt="Live Portfolio" title="ABDUL SAMI UTHWAL Live Portfolio" /></a>
+  &nbsp;
+  <a href="mailto:abdulsamiuthwal@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" height="48" alt="Email ABDUL SAMI UTHWAL" title="Email ABDUL SAMI UTHWAL" /></a>
+</div>
 
 </div>
 
