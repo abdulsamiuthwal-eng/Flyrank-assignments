@@ -11,17 +11,32 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 40px 50px;
             color: #1e293b;
             background: #ffffff;
-            line-height: 1.6;
-            font-size: 13.5px;
+            line-height: 1.5;
+            font-size: 12px;
+        }
+
+        .page {
+            width: 100%;
+            height: 960px;
+            padding: 25px 35px;
+            page-break-after: always;
+            break-after: page;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+            break-after: avoid;
         }
 
         .header {
-            border-bottom: 3px solid #059669;
-            padding-bottom: 16px;
-            margin-bottom: 24px;
+            border-bottom: 2px solid #059669;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .badge {
@@ -29,32 +44,32 @@
             background: #ecfdf5;
             color: #047857;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             letter-spacing: 0.05em;
             border: 1px solid #10b981;
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
             color: #0f172a;
-            margin: 4px 0 12px 0;
+            margin: 2px 0 6px 0;
         }
 
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 8px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            padding: 14px 18px;
-            border-radius: 10px;
-            margin-bottom: 24px;
-            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 11.5px;
         }
 
         .meta-item strong {
@@ -68,30 +83,43 @@
         }
 
         h2 {
-            font-size: 16px;
+            font-size: 14.5px;
             font-weight: 700;
             color: #0f172a;
-            border-left: 4px solid #059669;
+            border-left: 3px solid #059669;
             padding-left: 10px;
-            margin-top: 24px;
-            margin-bottom: 12px;
+            margin-top: 14px;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #047857;
+            margin-top: 10px;
+            margin-bottom: 4px;
         }
 
         p, li {
             color: #334155;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+        }
+
+        ul, ol {
+            padding-left: 18px;
+            margin-bottom: 10px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 12.5px;
+            margin: 10px 0;
+            font-size: 11px;
         }
 
         th, td {
             border: 1px solid #cbd5e1;
-            padding: 10px 12px;
+            padding: 6px 10px;
             text-align: left;
         }
 
@@ -101,104 +129,411 @@
             font-weight: 700;
         }
 
-        .pillar-card {
+        .card-box {
             background: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
-            padding: 14px 18px;
-            margin-bottom: 12px;
+            padding: 10px 14px;
+            margin-bottom: 10px;
         }
 
-        .pillar-title {
-            font-weight: 800;
-            color: #059669;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin-bottom: 4px;
+        .code-box {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 10.5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            line-height: 1.4;
         }
 
-        .footer-note {
-            margin-top: 32px;
-            padding-top: 16px;
+        .tag-pass {
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 15px;
+            left: 35px;
+            right: 35px;
             border-top: 1px solid #e2e8f0;
-            font-size: 12px;
+            padding-top: 8px;
+            font-size: 10px;
             color: #64748b;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <span class="badge">FlyRank General AI Fluency — Week 10 Capstone</span>
-        <h1>Send the Link: Launch, Demo & Story</h1>
-        <p style="color: #64748b; font-weight: 500;">Final Capstone Synthesis — Public Launch, Demo Video Proof, and 10-Week Engineering Narrative</p>
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page">
+        <div class="header">
+            <span class="badge">FlyRank General AI Fluency — Capstone Project (Week 10)</span>
+            <h1>Send the Link: Launch, Demo & Story</h1>
+            <p style="color: #64748b; font-weight: 500;">Comprehensive 5-Page Capstone Synthesis Document | Student: ABDUL SAMI UTHWAL</p>
+        </div>
+
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Student Name:</strong> Abdul Sami Uthwal</div>
+            <div class="meta-item"><strong>Track:</strong> General AI Fluency & Machine Learning</div>
+            <div class="meta-item"><strong>Live Launch URL:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">abdulsamiuthwal-portfolio.vercel.app</a></div>
+            <div class="meta-item"><strong>Live Demo Video:</strong> <a href="https://youtu.be/-uCqi_JDjfY" target="_blank">youtu.be/-uCqi_JDjfY</a></div>
+            <div class="meta-item"><strong>GitHub Repository:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments" target="_blank">abdulsamiuthwal-eng/Flyrank-assignments</a></div>
+            <div class="meta-item"><strong>Completion Date:</strong> 2026-08-12</div>
+        </div>
+
+        <h2>1. Executive Summary & Capstone Vision</h2>
+        <p>A portfolio is not a static PDF or classroom assignment—it is a live, verifiable career platform that proves what you can build, deploy, and defend. This Capstone deliverable synthesises the three core pillars of the FlyRank General AI Fluency Track:</p>
+        
+        <ul>
+            <li><strong>Pillar 1 — The Launch:</strong> Public deployment of a claim-first AI systems portfolio over HTTPS on Vercel Edge Network, fortified with Vercel Web Analytics, OpenGraph social cards, and the FlyRank Verified Graduate Badge.</li>
+            <li><strong>Pillar 2 — The Demo:</strong> Live video proof (<code>https://youtu.be/-uCqi_JDjfY</code>) demonstrating autonomous AI agent execution, API response latency, and verbal explanations of design trade-offs and limitations on camera.</li>
+            <li><strong>Pillar 3 — The Story:</strong> The complete 10-week engineering journey from CTR opportunity scoring to champion gradient boosting models (F1: 0.783), autonomous research agents, serverless lead capture pipelines, and production site hardening.</li>
+        </ul>
+
+        <h2>2. Pillar 1: The Launch Infrastructure</h2>
+        <div class="card-box">
+            <h3>Live Production Environment Details</h3>
+            <ul>
+                <li><strong>Public Production Domain:</strong> <code>https://abdulsamiuthwal-portfolio.vercel.app/</code></li>
+                <li><strong>Security & Protocol:</strong> HTTPS SSL/TLS Certificate auto-provisioned via Vercel Edge Network.</li>
+                <li><strong>Analytics Engine:</strong> Vercel Insights & Speed Analytics script (<code>/_vercel/insights/script.js</code>) active in <code>&lt;head&gt;</code>.</li>
+                <li><strong>Launch Hygiene Verification:</strong>
+                    <ul>
+                        <li>Custom SVG Lightning Favicon (<code>data:image/svg+xml...</code>)</li>
+                        <li>OpenGraph Cards (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>)</li>
+                        <li>Twitter Summary Card (<code>summary_large_image</code>)</li>
+                        <li>Schema.org <code>Person</code> JSON-LD structured data</li>
+                    </ul>
+                </li>
+                <li><strong>FlyRank Credential Badge:</strong> Embedded FlyRank Verified Graduate Badge in footer linking to <code>https://internship.flyrank.ai</code>.</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>FlyRank Capstone — Abdul Sami Uthwal</span>
+            <span>Page 1 of 5</span>
+        </div>
     </div>
 
-    <div class="meta-grid">
-        <div class="meta-item"><strong>Student:</strong> Abdul Sami Uthwal</div>
-        <div class="meta-item"><strong>Track:</strong> General AI Fluency (Week 10 Capstone)</div>
-        <div class="meta-item"><strong>Live Launch URL:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">abdulsamiuthwal-portfolio.vercel.app</a></div>
-        <div class="meta-item"><strong>Live Demo Video:</strong> <a href="https://youtu.be/-uCqi_JDjfY" target="_blank">youtu.be/-uCqi_JDjfY</a></div>
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page">
+        <h2>3. Pillar 2: The Demo — Autonomous Agent & Live Video Proof</h2>
+
+        <div class="card-box">
+            <h3>Live Video Proof Metadata</h3>
+            <p><strong>YouTube Unlisted Video Link:</strong> <a href="https://youtu.be/-uCqi_JDjfY" target="_blank">https://youtu.be/-uCqi_JDjfY</a></p>
+            <p><strong>Duration & Narration:</strong> Live end-to-end screen recording with voice narration demonstrating the <code>ResearchScout</code> AI Agent and Web UI.</p>
+        </div>
+
+        <h3>Autonomous Agent Architecture (`ResearchScoutAgent`)</h3>
+        <p>The <code>ResearchScout</code> agent is an autonomous literature research assistant built in Python that executes a 4-step pipeline:</p>
+
+        <div class="code-box">User Query (arXiv ID: 2312.00752)
+       │
+       ▼
+┌─────────────────────────────────────────┐
+│ TOOL 1 — arXiv REST API Fetch           │  ← Live HTTP GET to export.arxiv.org
+└────────────────────┬────────────────────┘
+                     │ Atom XML Payload
+                     ▼
+┌─────────────────────────────────────────┐
+│ XML Parser Engine                       │  ← xml.etree.ElementTree
+└────────────────────┬────────────────────┘
+                     │ Metadata Dict
+                     ▼
+┌─────────────────────────────────────────┐
+│ CORE JOB — Synthesis Engine             │  ← 5-Section Markdown Brief
+└────────────────────┬────────────────────┘
+                     │ Markdown String
+                     ▼
+┌─────────────────────────────────────────┐
+│ TOOL 2 — Local Filesystem Storage       │  ← Persists to work/outputs/research_briefs/
+└─────────────────────────────────────────┘</div>
+
+        <h3>Verbal Explanations On Camera</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Topic Explained On Camera</th>
+                    <th>Engineering Rationale / Insight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Design Decision</strong></td>
+                    <td>Atom XML API vs. Full PDF Parsing</td>
+                    <td>Switched from <code>pdfplumber</code> PDF parsing to arXiv Atom XML API feed. Reduced latency from <strong>18 seconds → 1.4 seconds</strong> (a <strong>12× speedup</strong>) while preserving full title, author, and abstract fidelity.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Known Limitation</strong></td>
+                    <td>Template-Based Synthesis Sections</td>
+                    <td>Sections 2–4 (Architecture, Benchmarks, Gotchas) use a fixed engineering template derived from the abstract. Dynamic body extraction is planned for v3.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="page-footer">
+            <span>FlyRank Capstone — Abdul Sami Uthwal</span>
+            <span>Page 2 of 5</span>
+        </div>
     </div>
 
-    <h2>1. Executive Summary & Capstone Vision</h2>
-    <p>A portfolio is not a static PDF or classroom assignment—it is a live, verifiable career platform that proves what you can build, deploy, and defend. This final Capstone deliverable synthesises the three core pillars of the FlyRank General AI Fluency Track: Launch, Demo, and Story.</p>
+    <!-- ================= PAGE 3 ================= -->
+    <div class="page">
+        <h2>4. Pillar 3: The Story — 10-Week Engineering Narrative</h2>
 
-    <h2>2. The Three Core Capstone Pillars</h2>
-    
-    <div class="pillar-card">
-        <div class="pillar-title">Pillar 1: The Launch (Production Infrastructure)</div>
-        <p><strong>URL:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">https://abdulsamiuthwal-portfolio.vercel.app/</a></p>
-        <p>Public deployment over HTTPS via Vercel Edge Network, fortified with Vercel Web Analytics, OpenGraph social cards, SVG favicon, and the embedded FlyRank Verified Graduate Badge.</p>
+        <p>The portfolio tells the progressive story of an AI engineer mastering machine learning, autonomous systems, serverless pipelines, and production deployment.</p>
+
+        <h3>Milestone Breakdown Across 10 Weeks</h3>
+
+        <div class="card-box">
+            <h4>Phase 1: Signal Framing & Data Contract (Weeks 1–4)</h4>
+            <p>Engineered the search ranking CTR Opportunity Scoring signal (<code>expected_ctr - actual_ctr</code>) across 600 synthetic search landing pages and 15 domain clusters. Formulated data contracts and schemas for historical impressions and rankings.</p>
+        </div>
+
+        <div class="card-box">
+            <h4>Phase 2: ML Model Benchmarking & GroupKFold Validation Audit (Weeks 5–6)</h4>
+            <p>Benchmarked 5 candidate machine learning models. Evaluated under strict GroupKFold domain-split validation to eliminate data leakage across domain clusters.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model Candidate</th>
+                        <th>Validation Strategy</th>
+                        <th>Validated F1 Score</th>
+                        <th>ROC-AUC Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Baseline Rule Model</td>
+                        <td>Heuristic Threshold</td>
+                        <td>0.480</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Logistic Regression</td>
+                        <td>GroupKFold (k=5)</td>
+                        <td>0.273</td>
+                        <td>0.612</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Tree Classifier</td>
+                        <td>GroupKFold (k=5)</td>
+                        <td>0.583</td>
+                        <td>0.741</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest Classifier</td>
+                        <td>GroupKFold (k=5)</td>
+                        <td>0.609</td>
+                        <td>0.812</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gradient Boosting (Champion)</strong></td>
+                        <td>GroupKFold (k=5)</td>
+                        <td><strong>0.783</strong></td>
+                        <td><strong>0.983</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-box">
+            <h4>Phase 3: Autonomous Agent & Live Lead Capture Pipeline (Weeks 7–8)</h4>
+            <p>Developed the <code>ResearchScout</code> Python agent and built an end-to-end live Lead Capture System wired to Web3Forms serverless API on the production portfolio, delivering leads directly to Gmail.</p>
+        </div>
+
+        <div class="page-footer">
+            <span>FlyRank Capstone — Abdul Sami Uthwal</span>
+            <span>Page 3 of 5</span>
+        </div>
     </div>
 
-    <div class="pillar-card">
-        <div class="pillar-title">Pillar 2: The Demo (Video Proof & Agent Architecture)</div>
-        <p><strong>Video Link:</strong> <a href="https://youtu.be/-uCqi_JDjfY" target="_blank">https://youtu.be/-uCqi_JDjfY</a> (Unlisted YouTube)</p>
-        <p>Live screen recording demonstrating ResearchScout agent fetching arXiv REST API live, parsing Atom XML, synthesising engineering briefs, and saving to disk in &lt;900ms. Includes verbal explanation of Design Decision (XML vs PDF speedup) and Known Limitation (template synthesis).</p>
+    <!-- ================= PAGE 4 ================= -->
+    <div class="page">
+        <h2>5. Site Hardening, QA Stress Matrix & Performance Audit</h2>
+
+        <p>In Week 9 ("Break Your Own Site"), the application was subjected to rigorous stress testing rather than relying on happy-path demonstrations.</p>
+
+        <h3>"Where It Breaks" Stress Matrix</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Trigger Action</th>
+                    <th>Initial Behavior</th>
+                    <th>Triage</th>
+                    <th>Remediation Applied</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Empty Form</strong></td>
+                    <td>Clicked Submit with empty inputs</td>
+                    <td>Native browser alert</td>
+                    <td><span class="tag-pass">Fix-Now</span></td>
+                    <td>Added input trimming, regex email validation, and inline <code>#form-status</code> feedback.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Double Click</strong></td>
+                    <td>Clicked Submit twice in &lt;300ms</td>
+                    <td>Duplicate HTTP requests</td>
+                    <td><span class="tag-pass">Fix-Now</span></td>
+                    <td>Added <code>isSubmitting</code> locking flag & button disabling.</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Whitespace</strong></td>
+                    <td>Entered spaces <code>"   "</code></td>
+                    <td>Accepted as valid text</td>
+                    <td><span class="tag-pass">Fix-Now</span></td>
+                    <td>Enforced <code>.trim()</code> sanitization across all input fields.</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Social Meta</strong></td>
+                    <td>Link shared on social media</td>
+                    <td>Blank link preview</td>
+                    <td><span class="tag-pass">Fix-Now</span></td>
+                    <td>Injected OpenGraph tags, Twitter Cards, & Schema JSON-LD.</td>
+                </tr>
+                <tr>
+                    <td><strong>5. API Rate Limit</strong></td>
+                    <td>&gt;3 API requests / sec</td>
+                    <td>HTTP 429 throttling</td>
+                    <td><span class="tag-pass">Limitation</span></td>
+                    <td>Documented informal arXiv API rate limits with retry status.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Performance & PageSpeed Audit Scores</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Audit Metric</th>
+                    <th>Measurement Tool</th>
+                    <th>Score / Result</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Page Speed Score</strong></td>
+                    <td>Lighthouse / PageSpeed</td>
+                    <td><strong>98 / 100</strong></td>
+                    <td><span class="tag-pass">PASS</span></td>
+                </tr>
+                <tr>
+                    <td><strong>First Contentful Paint (FCP)</strong></td>
+                    <td>Navigation Timing API</td>
+                    <td><strong>0.4 seconds</strong></td>
+                    <td><span class="tag-pass">PASS</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Largest Contentful Paint (LCP)</strong></td>
+                    <td>Performance Observer</td>
+                    <td><strong>0.8 seconds</strong></td>
+                    <td><span class="tag-pass">PASS</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Cumulative Layout Shift (CLS)</strong></td>
+                    <td>Layout Instability API</td>
+                    <td><strong>0.00</strong></td>
+                    <td><span class="tag-pass">PASS</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Agent REST API Latency</strong></td>
+                    <td>Flask Server / arXiv</td>
+                    <td><strong>681ms - 898ms</strong></td>
+                    <td><span class="tag-pass">PASS</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="page-footer">
+            <span>FlyRank Capstone — Abdul Sami Uthwal</span>
+            <span>Page 4 of 5</span>
+        </div>
     </div>
 
-    <div class="pillar-card">
-        <div class="pillar-title">Pillar 3: The Story (10-Week Engineering Journey)</div>
-        <p>From heuristic CTR opportunity baselines (F1: 0.480) to Champion Gradient Boosting models (F1: 0.783, ROC-AUC: 0.983), autonomous literature agents, serverless Web3Forms lead capture pipelines, PageSpeed 98/100 hardening, and verified graduate launch.</p>
-    </div>
+    <!-- ================= PAGE 5 ================= -->
+    <div class="page">
+        <h2>6. Growth Roadmap & Preserved AI Context</h2>
 
-    <h2>3. Engineering Milestone Progress Matrix</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Phase / Milestone</th>
-                <th>Core Artifact / Technology</th>
-                <th>Verified Result / Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Weeks 1–4: Signal Framing</strong></td>
-                <td>CTR opportunity gap formulation across 600 pages</td>
-                <td>Data contract & schemas established</td>
-            </tr>
-            <tr>
-                <td><strong>Weeks 5–6: ML Modeling</strong></td>
-                <td>Gradient Boosting Champion vs 4 Baselines</td>
-                <td>GroupKFold Validated F1: <strong>0.783</strong> (ROC-AUC: 0.983)</td>
-            </tr>
-            <tr>
-                <td><strong>Weeks 7–8: Agent & Lead System</strong></td>
-                <td>ResearchScout Agent + Web3Forms API</td>
-                <td>Sub-2s arXiv briefs + live lead email delivery</td>
-            </tr>
-            <tr>
-                <td><strong>Weeks 9–10: Launch & Capstone</strong></td>
-                <td>SEO metadata, Vercel Analytics, FlyRank Badge</td>
-                <td>PageSpeed: <strong>98/100</strong>, Live HTTPS deployment</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="card-box">
+            <h3>The 3-Beat Case Study Addition Protocol</h3>
+            <p>To ensure long-term portfolio growth without CSS rebuilds, every future case study follows a strict 3-beat structure:</p>
+            <ul>
+                <li><strong>Beat 1 (Problem):</strong> Define the operational bottleneck and baseline delay.</li>
+                <li><strong>Beat 2 (What You Did):</strong> Detail the AI architecture, models, vector indexes, and agent loops deployed.</li>
+                <li><strong>Beat 3 (What Came of It):</strong> State the quantifiable ROI (% latency drop, accuracy score, hours saved).</li>
+            </ul>
+        </div>
 
-    <div class="footer-note">
-        FlyRank General AI Fluency Track — Final Capstone Completion | Student: Abdul Sami Uthwal
+        <div class="card-box">
+            <h3>Named Next Real Piece of Work</h3>
+            <p><strong>Project Name:</strong> <em>Autonomous Multi-Agent Enterprise RAG & Legal Citation Engine</em></p>
+            <p><strong>Architecture:</strong> Qdrant vector index + OpenAI <code>text-embedding-3-large</code> + Dual-agent supervisor loop (<code>LegalResearcher</code> + <code>CitationAuditor</code>) deployed on Cloud Run.</p>
+            <p><strong>Target Metric:</strong> 85% reduction in legal document audit time with 99.2% citation precision.</p>
+        </div>
+
+        <h2>7. Final Verification Checklist & Data Credit</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verification Item</th>
+                    <th>Requirement Confirmation</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Live HTTPS Launch</strong></td>
+                    <td>Live at <code>https://abdulsamiuthwal-portfolio.vercel.app/</code> over SSL</td>
+                    <td><span class="tag-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Live Demo Video</strong></td>
+                    <td>Unlisted YouTube video <code>https://youtu.be/-uCqi_JDjfY</code></td>
+                    <td><span class="tag-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Research Paper Deployed</strong></td>
+                    <td>Live at <code>https://abdulsamiuthwal-portfolio.vercel.app/work/paper/index.html</code></td>
+                    <td><span class="tag-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Graduate Credential Badge</strong></td>
+                    <td>Embedded in footer linking to <code>https://internship.flyrank.ai</code></td>
+                    <td><span class="tag-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Data Credit & Acknowledgment</strong></td>
+                    <td>"Built on the FlyRank ML Internship dataset" linking to <a href="https://flyrank.ai" target="_blank">flyrank.ai</a></td>
+                    <td><span class="tag-pass">VERIFIED</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="text-align: center; margin-top: 24px; font-weight: 700; color: #059669;">
+            ⚡ Capstone Completion Confirmed — Abdul Sami Uthwal | FlyRank Internship 2026
+        </p>
+
+        <div class="page-footer">
+            <span>FlyRank Capstone — Abdul Sami Uthwal</span>
+            <span>Page 5 of 5</span>
+        </div>
     </div>
 
 </body>
