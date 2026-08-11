@@ -23,6 +23,19 @@
   </a>
 </p>
 
+<!-- Dark Glassmorphic Rounded Cards (Stats & Top Languages) -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=abdulsamiuthwal-eng&show_icons=true&theme=dark&hide_border=false&border_radius=12&title_color=10b981&icon_color=10b981&text_color=9ca3af&bg_color=0d1117" height="170" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=abdulsamiuthwal-eng&layout=compact&theme=dark&hide_border=false&border_radius=12&title_color=10b981&text_color=9ca3af&bg_color=0d1117" height="170" />
+</p>
+
+<!-- Social & Contact Quick Connect Badges -->
+<p align="center">
+  <a href="https://abdulsamiuthwal-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Live_Portfolio-059669?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+  <a href="https://github.com/abdulsamiuthwal-eng"><img src="https://img.shields.io/badge/GitHub_Profile-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="mailto:abdulsamiuthwal@gmail.com"><img src="https://img.shields.io/badge/Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+</p>
+
 </div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
