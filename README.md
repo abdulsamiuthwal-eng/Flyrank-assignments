@@ -1,6 +1,5 @@
-<!-- Animated Typing Banner Header -->
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=24&duration=3000&pause=1000&color=059669&center=true&vCenter=true&width=750&lines=Abdul+Sami+Uthwal+%E2%80%94+AI+Systems+%26+ML+Engineer;FlyRank+Verified+Graduate+%E2%80%94+Machine+Learning+Track;Autonomous+AI+Agents+%2B+GroupKFold+CTR+Optimization" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=24&duration=3000&pause=1000&color=059669&center=true&vCenter=true&width=750&lines=ABDUL+SAMI+UTHWAL+%E2%80%94+AI+Systems+%26+ML+Engineer;FlyRank+Verified+Graduate+%E2%80%94+Machine+Learning+Track;Autonomous+AI+Agents+%2B+GroupKFold+CTR+Optimization" alt="Typing SVG" />
 </div>
 
 <div align="center">
@@ -20,7 +19,7 @@
 
 ## 📌 Executive Overview
 
-Welcome to the official, production-verified AI Engineering & Machine Learning Portfolio of **Abdul Sami Uthwal** for the **FlyRank Internship (Machine Learning & General AI Fluency Tracks)**.
+Welcome to the official, production-verified AI Engineering & Machine Learning Portfolio of **ABDUL SAMI UTHWAL** for the **FlyRank Internship (Machine Learning & General AI Fluency Tracks)**.
 
 This repository unifies three production-grade AI systems:
 1. **Machine Learning CTR Opportunity Engine:** A GroupKFold domain-validated Gradient Boosting Classifier (**F1: 0.783, ROC-AUC: 0.983**) predicting search ranking engagement gaps across 600 landing pages.
@@ -157,7 +156,7 @@ Special thanks to the **FlyRank AI** leadership and lead mentors for their excep
 
 ## 👤 Author
 
-**Abdul Sami Uthwal**  
+**ABDUL SAMI UTHWAL**  
 FlyRank Intern — Machine Learning & General AI Fluency Tracks  
 GitHub: [@abdulsamiuthwal-eng](https://github.com/abdulsamiuthwal-eng)  
 Portfolio: [abdulsamiuthwal-portfolio.vercel.app](https://abdulsamiuthwal-portfolio.vercel.app)
