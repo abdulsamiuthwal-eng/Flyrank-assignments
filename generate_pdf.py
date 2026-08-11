@@ -1,0 +1,207 @@
+import os
+from playwright.sync_api import sync_playwright
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 08 Deliverable — Make It Do Something</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 40px 50px;
+            color: #1e293b;
+            background: #ffffff;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .header {
+            border-bottom: 3px solid #0ea5e9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 4px 0 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .meta-item strong {
+            color: #475569;
+        }
+
+        .meta-item a {
+            color: #0284c7;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #0f172a;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 10px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #334155;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+
+        p, li {
+            color: #334155;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 4px solid #16a34a;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="badge">General AI Fluency · Week 08 Assignment</div>
+        <h1>Make It Do Something — Submission & Explainer</h1>
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item"><strong>Student:</strong> Abdul Sami Uthwal</div>
+        <div class="meta-item"><strong>Selected Feature:</strong> Live Lead Capture System (1 Feature)</div>
+        <div class="meta-item"><strong>Live URL:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/#contact-page">https://abdulsamiuthwal-portfolio.vercel.app/#contact-page</a></div>
+        <div class="meta-item"><strong>Backend Provider:</strong> Web3Forms API (Free Tier)</div>
+        <div class="meta-item"><strong>Recipient Email:</strong> abdulsamiuthwal@gmail.com</div>
+        <div class="meta-item"><strong>Verification Status:</strong> Real Test Submission Verified</div>
+    </div>
+
+    <h2>1. Live Feature Overview & Proof of Functionality</h2>
+    <p>For the Week 8 assignment, I selected and fully wired <strong>exactly one dynamic feature</strong> into my live portfolio website: an end-to-end <strong>Lead Capture & Contact Engine</strong>.</p>
+    
+    <div class="highlight-box">
+        <strong>Verified Test Submission Evidence:</strong><br>
+        A live test submission was performed directly on the production domain <code>https://abdulsamiuthwal-portfolio.vercel.app/#contact-page</code> with test payload (<em>Name: Test User, Email: test@example.com, Goals: Hello world test</em>). The serverless backend API processed the submission, and a formatted lead notification was successfully delivered in real-time to my Gmail inbox (<code>abdulsamiuthwal@gmail.com</code>).
+    </div>
+
+    <h2>2. Plain-Words Explainer</h2>
+
+    <h3>A. What is a Backend?</h3>
+    <p>In modern software development, a <strong>frontend</strong> is the interactive visual layer rendered inside the client's web browser (HTML layouts, CSS design tokens, form fields, and buttons). A <strong>backend</strong> is the server-side infrastructure running behind the scenes that executes business logic, manages database records, verifies security, and relays data to external services (like email providers or third-party APIs).</p>
+    <p>Without a backend, interactive form controls are purely aesthetic—clicking "Submit" has nowhere to send the data. The backend provides the underlying pipeline that translates user interactions into real-world outcomes.</p>
+
+    <h3>B. What My Feature Does</h3>
+    <p>My portfolio features a single, production-wired <strong>Lead Capture Engine</strong>. When a hiring manager, client, or recruiter fills out the contact form on my live site, the feature receives their inputs (Name, Email, Organization, Project Requirements). Instead of displaying a static alert or relying on broken <code>mailto:</code> links, it transmits the inquiry to a serverless backend API, which immediately formats and delivers a lead notification to my personal Gmail inbox so I can follow up directly.</p>
+
+    <h3>C. Step-by-Step Data Flow</h3>
+    <ol>
+        <li><strong>User Input (Client Layer):</strong> The visitor fills out the contact fields on <code>https://abdulsamiuthwal-portfolio.vercel.app/#contact-page</code> and clicks "Send Message / Get Estimate".</li>
+        <li><strong>Client Dispatch (Transport Layer):</strong> JavaScript intercepts the form submission event, packages the input fields into a structured JSON object alongside an API access key, and sends an asynchronous HTTP <code>POST</code> request to <code>https://api.web3forms.com/submit</code>.</li>
+        <li><strong>Backend Processing (Serverless Layer):</strong> Web3Forms acts as the serverless backend. It validates the access key, checks for spam signatures, packages the JSON fields into a clean HTML email template, and relays it via SMTP.</li>
+        <li><strong>Inbox Delivery (Output Layer):</strong> The formatted lead lands in my Gmail inbox (<code>abdulsamiuthwal@gmail.com</code>) within seconds, with the <code>Reply-To</code> header set to the visitor's email address for direct two-way communication.</li>
+    </ol>
+
+    <h2>3. Technical & Architecture Notes</h2>
+    <ul>
+        <li><strong>Zero Cold-Start Delay:</strong> By utilizing Web3Forms serverless API over standard custom Node/Python backend servers on free tiers (like Render spin-downs), submissions execute instantly without 50-second spin-up lags.</li>
+        <li><strong>Free-Tier Compliance:</strong> Operates under Web3Forms free tier (250 submissions/month), ensuring a cost-free, maintenance-free production deployment.</li>
+        <li><strong>Rubric Adherence:</strong> Focuses strictly on <strong>exactly one feature</strong> working end-to-end with real submission evidence, as specified in the assignment brief.</li>
+    </ul>
+
+    <div class="footer">
+        © 2026 Abdul Sami Uthwal · General AI Fluency Week 08 Deliverable · Built with absolute focus.
+    </div>
+
+</body>
+</html>
+"""
+
+html_path = r"c:\Users\abdul\Desktop\FlyRank_Portfolio\submission\w08_make_it_do_something_submission.html"
+pdf_path = r"c:\Users\abdul\Desktop\FlyRank_Portfolio\submission\w08_make_it_do_something_submission.pdf"
+
+with open(html_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Generated HTML. Converting to PDF with Playwright...")
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto(f"file:///{html_path}")
+    page.pdf(
+        path=pdf_path,
+        format="Letter",
+        print_background=True,
+        margin={"top": "0.4in", "bottom": "0.4in", "left": "0.4in", "right": "0.4in"}
+    )
+    browser.close()
+
+print(f"[OK] PDF generated successfully at: {pdf_path}")
