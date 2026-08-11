@@ -15,9 +15,9 @@ At the start of ANY session or task in this workspace, you MUST immediately read
 
 ## Mandatory Task Completion Rule
 At the completion of ANY task or assignment, you MUST automatically output the exact formatted text for the 3 FlyRank submission portal boxes:
-1. **Deliverable links Box** (One public http/https URL per line)
+1. **Deliverable links Box** (MUST contain specific, exact public GitHub URLs to all relevant files, scripts, reports, and folders for that task—NEVER just the generic repo root link. Plus live demo/video URLs if applicable. One public http/https URL per line).
 2. **Notes Box** (Formatted Markdown text for context)
-3. **Files Box** (Exact file paths to upload if required)
+3. **Files Box** (Exact local file paths to upload if required)
 
 ## Rule for AI Agent
 Always maintain complete awareness of `CHAT_HISTORY_GUIDE.md`. Speak to the user in Roman Urdu or English as preferred by the user, and keep responses direct, professional, and action-oriented.

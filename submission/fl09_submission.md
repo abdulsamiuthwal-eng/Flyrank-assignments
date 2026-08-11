@@ -10,9 +10,12 @@
 
 ## Deliverable Links Box (Copy & Paste)
 
-```
-https://github.com/abdulsamiuthwal-eng/Flyrank-assignments
-
+```text
+https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/README.md
+https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/work/agent/research_scout.py
+https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/work/agent/web_app.py
+https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/work/agent/templates/index.html
+https://github.com/abdulsamiuthwal-eng/Flyrank-assignments/blob/main/submission/fl09_submission.md
 https://youtu.be/-uCqi_JDjfY
 ```
 
