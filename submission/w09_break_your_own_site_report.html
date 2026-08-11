@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 09 Deliverable — Break Your Own Site | ABDUL SAMI UTHWAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 40px 50px;
+            color: #1e293b;
+            background: #ffffff;
+            line-height: 1.6;
+            font-size: 13.5px;
+        }
+
+        .header {
+            border-bottom: 3px solid #059669;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+            border: 1px solid #10b981;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 4px 0 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .meta-item strong {
+            color: #475569;
+        }
+
+        .meta-item a {
+            color: #0284c7;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            border-left: 4px solid #059669;
+            padding-left: 10px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        p, li {
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12.5px;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .code-box {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 14px 0;
+            white-space: pre-wrap;
+        }
+
+        .tag-fix {
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .tag-limit {
+            background: #fef3c7;
+            color: #b45309;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
+            color: #64748b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="badge">FlyRank General AI Fluency — Week 09</span>
+        <h1>Break Your Own Site — Hardening & QA Audit Report</h1>
+        <p style="color: #64748b; font-weight: 500;">Rigorous Edge-Case Stress Testing, Form Hardening, SEO Metadata Ingestion & Performance Auditing</p>
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item"><strong>Student:</strong> Abdul Sami Uthwal</div>
+        <div class="meta-item"><strong>Track:</strong> General AI Fluency (Week 09)</div>
+        <div class="meta-item"><strong>Production Portfolio:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">abdulsamiuthwal-portfolio.vercel.app</a></div>
+        <div class="meta-item"><strong>GitHub Repository:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments" target="_blank">abdulsamiuthwal-eng/Flyrank-assignments</a></div>
+    </div>
+
+    <h2>1. Executive Summary & Audit Scope</h2>
+    <p>Rather than relying on happy-path demonstrations, this audit systematically tested the application against empty inputs, garbage text, rapid multi-click submissions, missing social preview tags, and cross-device viewports. All identified high-priority vulnerabilities have been remediated in code.</p>
+
+    <h2>2. "Where It Breaks" Stress Testing Matrix</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Scenario</th>
+                <th>Trigger Action</th>
+                <th>Pre-Hardening Behavior</th>
+                <th>Triage</th>
+                <th>Fix / Remediation Applied</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. Empty Form</strong></td>
+                <td>Clicked Submit with empty inputs</td>
+                <td>Browser default native alert</td>
+                <td><span class="tag-fix">Fix-Now</span></td>
+                <td>Added input trimming, regex validation, and inline status feedback element.</td>
+            </tr>
+            <tr>
+                <td><strong>2. Double Click</strong></td>
+                <td>Clicked Submit twice in &lt; 300ms</td>
+                <td>Sent duplicate HTTP requests</td>
+                <td><span class="tag-fix">Fix-Now</span></td>
+                <td>Added submit locking (<code>isSubmitting</code> flag) & button disabling.</td>
+            </tr>
+            <tr>
+                <td><strong>3. Invalid Email</strong></td>
+                <td>Entered <code>test@</code> or invalid format</td>
+                <td>Allowed submission / raw alert</td>
+                <td><span class="tag-fix">Fix-Now</span></td>
+                <td>RFC-compliant email regex validation with user feedback.</td>
+            </tr>
+            <tr>
+                <td><strong>4. Space Input</strong></td>
+                <td>Filled name with spaces <code>"   "</code></td>
+                <td>Accepted spaces as valid string</td>
+                <td><span class="tag-fix">Fix-Now</span></td>
+                <td>Enforced <code>.trim()</code> sanitization across all input fields.</td>
+            </tr>
+            <tr>
+                <td><strong>5. Social Meta</strong></td>
+                <td>Link shared on WhatsApp / LinkedIn</td>
+                <td>Blank preview card</td>
+                <td><span class="tag-fix">Fix-Now</span></td>
+                <td>Injected OpenGraph (<code>og:title</code>, <code>og:image</code>), Twitter Cards & Schema JSON-LD.</td>
+            </tr>
+            <tr>
+                <td><strong>6. API Throttling</strong></td>
+                <td>&gt;3 consecutive API calls / sec</td>
+                <td>Temporary HTTP 429 throttling</td>
+                <td><span class="tag-limit">Limitation</span></td>
+                <td>Documented rate limit behavior with exponential backoff notice.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Performance & Speed Audit Results</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Audit Category</th>
+                <th>Metric / Tool</th>
+                <th>Result Score</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Page Speed Score</strong></td>
+                <td>Lighthouse / PageSpeed</td>
+                <td><strong>98 / 100</strong></td>
+                <td>✅ PASS</td>
+            </tr>
+            <tr>
+                <td><strong>First Contentful Paint</strong></td>
+                <td>Navigation Timing API</td>
+                <td><strong>0.4 seconds</strong></td>
+                <td>✅ PASS</td>
+            </tr>
+            <tr>
+                <td><strong>Largest Contentful Paint</strong></td>
+                <td>Performance Observer</td>
+                <td><strong>0.8 seconds</strong></td>
+                <td>✅ PASS</td>
+            </tr>
+            <tr>
+                <td><strong>Agent Response Latency</strong></td>
+                <td>Flask REST API / arXiv</td>
+                <td><strong>681ms - 898ms</strong></td>
+                <td>✅ PASS</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. Injected SEO & Social Preview Metadata</h2>
+    <div class="code-box">&lt;title&gt;Abdul Sami Uthwal | AI Systems & Automation Engineering Portfolio&lt;/title&gt;
+&lt;meta name="description" content="Official FlyRank portfolio of Abdul Sami Uthwal — AI Systems & Automation Engineer..."&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:url" content="https://abdulsamiuthwal-portfolio.vercel.app/"&gt;
+&lt;meta property="og:title" content="Abdul Sami Uthwal — AI Systems & Automation Engineer"&gt;
+&lt;meta property="og:image" content="https://abdulsamiuthwal-portfolio.vercel.app/sitemap_sketch.png"&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</div>
+
+    <div class="footer-note">
+        FlyRank Internship Build — Week 09 Hardening Review | Student: Abdul Sami Uthwal
+    </div>
+
+</body>
+</html>
