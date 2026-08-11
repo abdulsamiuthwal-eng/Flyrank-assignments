@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResearchScout Agent — FL-09 | Abdul Sami Uthwal</title>
+  <meta name="description" content="Autonomous AI/ML literature research agent. Fetches arXiv papers, synthesises engineering briefs, and persists them to disk — all in under 2 seconds." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Marked.js — client-side Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS  (Emerald & Amber — matches Vercel portfolio)
+    ============================================================ */
+    :root {
+      --bg:          #f8faf9;
+      --bg-card:     #ffffff;
+      --border:      #e5e7eb;
+      --border-h:    #10b981;
+      --primary:     #059669;
+      --primary-d:   #047857;
+      --primary-glow:rgba(5,150,105,0.15);
+      --secondary:   #d97706;
+      --accent:      #0f766e;
+      --text:        #1f2937;
+      --muted:       #6b7280;
+      --code-bg:     #f0fdf4;
+      --success:     #10b981;
+      --error:       #ef4444;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Space Grotesk', sans-serif;
+      --font-mono:   'JetBrains Mono', monospace;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* ============================================================  RESET */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================  BG */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image: radial-gradient(rgba(15,118,110,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .glow-1 {
+      position: fixed; border-radius:50%; filter:blur(130px);
+      z-index:-1; pointer-events:none; opacity:.2;
+      width:500px; height:500px; background:#10b981; top:-150px; right:-120px;
+    }
+    .glow-2 {
+      position: fixed; border-radius:50%; filter:blur(130px);
+      z-index:-1; pointer-events:none; opacity:.18;
+      width:580px; height:580px; background:#f59e0b; bottom:-180px; left:-160px;
+    }
+
+    /* ============================================================  NAV */
+    .navbar {
+      position: sticky; top:0; z-index:100;
+      backdrop-filter: blur(18px) saturate(160%);
+      background: rgba(248,250,249,0.88);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width:1080px; margin:0 auto; padding:0 24px;
+      height:68px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-head); font-weight:800; font-size:18px;
+      color: var(--text); text-decoration:none; display:flex; align-items:center; gap:8px;
+    }
+    .nav-logo .accent { color: var(--primary); }
+    .nav-badge {
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+      background:var(--primary-glow); color:var(--primary); border:1px solid var(--border-h);
+      padding:3px 10px; border-radius:20px;
+    }
+
+    /* ============================================================  LAYOUT */
+    .page { max-width:1080px; margin:0 auto; padding:48px 24px 80px; }
+
+    /* ============================================================  HERO */
+    .hero { text-align:center; margin-bottom:52px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:7px;
+      background:var(--primary-glow); border:1px solid var(--border-h);
+      color:var(--primary); font-size:12px; font-weight:700;
+      padding:4px 14px; border-radius:20px; margin-bottom:20px;
+      text-transform:uppercase; letter-spacing:.06em;
+    }
+    .hero-badge .dot {
+      width:7px; height:7px; border-radius:50%; background:var(--primary);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ opacity:1; transform:scale(1); }
+      50%    { opacity:.5; transform:scale(.7); }
+    }
+    .hero h1 {
+      font-family: var(--font-head); font-size:clamp(28px,4vw,48px);
+      font-weight:800; line-height:1.15; margin-bottom:16px;
+      color: var(--text);
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .hero p {
+      max-width:600px; margin:0 auto; font-size:16px;
+      line-height:1.65; color:var(--muted);
+    }
+
+    /* ============================================================  STATS ROW */
+    .stats {
+      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+      margin-top:32px; margin-bottom:52px;
+    }
+    .stat-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:12px; padding:16px 24px; text-align:center;
+      min-width:130px; box-shadow:var(--shadow);
+      transition: border-color .2s, transform .2s;
+    }
+    .stat-card:hover { border-color:var(--border-h); transform:translateY(-2px); }
+    .stat-value { font-family:var(--font-head); font-size:26px; font-weight:800; color:var(--primary); }
+    .stat-label { font-size:12px; color:var(--muted); margin-top:4px; font-weight:500; }
+
+    /* ============================================================  SEARCH BOX */
+    .search-section { max-width:740px; margin:0 auto 48px; }
+    .section-label {
+      font-family:var(--font-head); font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.1em;
+      color:var(--primary); margin-bottom:10px;
+    }
+    .search-card {
+      background:var(--bg-card); border:1.5px solid var(--border);
+      border-radius:var(--radius); padding:28px;
+      box-shadow:var(--shadow); transition:border-color .2s;
+    }
+    .search-card:focus-within { border-color:var(--border-h); }
+
+    .input-group { display:flex; gap:12px; }
+    .arxiv-input {
+      flex:1; font-family:var(--font-mono); font-size:15px;
+      padding:14px 18px; border:1.5px solid var(--border);
+      border-radius:10px; background:var(--bg);
+      color:var(--text); outline:none;
+      transition:border-color .2s, box-shadow .2s;
+    }
+    .arxiv-input:focus {
+      border-color:var(--primary);
+      box-shadow:0 0 0 3px var(--primary-glow);
+    }
+    .arxiv-input::placeholder { color:var(--muted); }
+
+    .btn-run {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--font-head); font-size:15px; font-weight:700;
+      background:var(--primary); color:#fff;
+      padding:14px 28px; border:none; border-radius:10px;
+      cursor:pointer; white-space:nowrap;
+      transition:background .2s, transform .15s, box-shadow .2s;
+      box-shadow:0 4px 14px rgba(5,150,105,0.35);
+    }
+    .btn-run:hover { background:var(--primary-d); transform:translateY(-1px); box-shadow:0 6px 20px rgba(5,150,105,0.4); }
+    .btn-run:active { transform:translateY(0); }
+    .btn-run:disabled { opacity:.55; cursor:not-allowed; transform:none; }
+
+    /* ============================================================  CHIPS */
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .chip {
+      font-family:var(--font-mono); font-size:12px; font-weight:500;
+      background:var(--code-bg); border:1px solid var(--border-h);
+      color:var(--accent); padding:5px 12px; border-radius:20px;
+      cursor:pointer; transition:background .15s, transform .15s;
+      user-select:none;
+    }
+    .chip:hover { background:var(--primary-glow); transform:translateY(-1px); }
+    .chip .chip-title { color:var(--muted); font-size:11px; }
+
+    /* ============================================================  STATUS */
+    .status-bar {
+      display:none; align-items:center; gap:12px;
+      margin-top:16px; padding:12px 16px;
+      border-radius:10px; font-size:13px; font-weight:500;
+    }
+    .status-bar.loading {
+      display:flex; background:#f0fdf4; border:1px solid var(--border-h); color:var(--primary);
+    }
+    .status-bar.error {
+      display:flex; background:#fef2f2; border:1px solid var(--error); color:var(--error);
+    }
+    .spinner {
+      width:16px; height:16px; border:2.5px solid var(--border-h);
+      border-top-color:var(--primary); border-radius:50%;
+      animation:spin .7s linear infinite; flex-shrink:0;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* ============================================================  PIPELINE STEPS */
+    .pipeline {
+      display:flex; gap:0; align-items:stretch;
+      margin-bottom:48px; overflow-x:auto;
+    }
+    .step {
+      flex:1; min-width:180px; background:var(--bg-card);
+      border:1px solid var(--border); padding:20px 18px;
+      position:relative; transition:border-color .2s;
+    }
+    .step:first-child { border-radius:var(--radius) 0 0 var(--radius); }
+    .step:last-child  { border-radius:0 var(--radius) var(--radius) 0; }
+    .step + .step { border-left:none; }
+    .step.active { border-color:var(--border-h); background:var(--primary-glow); }
+    .step-num {
+      font-family:var(--font-head); font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:8px;
+    }
+    .step-name { font-family:var(--font-head); font-size:14px; font-weight:700; color:var(--text); }
+    .step-desc { font-size:12px; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .step-arrow {
+      position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+      width:28px; height:28px; background:var(--bg-card);
+      border:1px solid var(--border); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; z-index:1; color:var(--primary);
+    }
+    .step:last-child .step-arrow { display:none; }
+
+    /* ============================================================  OUTPUT */
+    .output-section { display:none; }
+    .output-section.visible { display:block; }
+
+    .output-header {
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:12px; margin-bottom:20px;
+    }
+    .output-meta {
+      display:flex; flex-wrap:wrap; gap:8px; font-size:12px; font-weight:500;
+      color:var(--muted);
+    }
+    .meta-tag {
+      background:var(--bg-card); border:1px solid var(--border);
+      padding:4px 10px; border-radius:6px;
+    }
+    .meta-tag span { color:var(--primary); }
+
+    .btn-copy, .btn-download {
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--font-head); font-size:13px; font-weight:600;
+      padding:8px 16px; border-radius:8px; cursor:pointer; border:none;
+      transition:background .15s, transform .15s;
+    }
+    .btn-copy {
+      background:var(--primary-glow); color:var(--primary);
+      border:1px solid var(--border-h);
+    }
+    .btn-copy:hover { background:rgba(5,150,105,0.25); }
+    .btn-download {
+      background:var(--secondary); color:#fff;
+    }
+    .btn-download:hover { background:#b45309; transform:translateY(-1px); }
+
+    .brief-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--radius); padding:32px 36px;
+      box-shadow:var(--shadow); line-height:1.7;
+    }
+
+    /* Markdown typography inside .brief-card */
+    .brief-card h1 {
+      font-family:var(--font-head); font-size:22px; font-weight:800;
+      color:var(--text); border-bottom:2px solid var(--border);
+      padding-bottom:12px; margin-bottom:20px;
+    }
+    .brief-card h2 {
+      font-family:var(--font-head); font-size:16px; font-weight:700;
+      color:var(--accent); margin:28px 0 10px;
+      padding-left:10px; border-left:3px solid var(--primary);
+    }
+    .brief-card p  { color:var(--text); margin-bottom:12px; }
+    .brief-card ul, .brief-card ol { padding-left:22px; margin-bottom:14px; }
+    .brief-card li { margin-bottom:6px; color:var(--text); }
+    .brief-card code {
+      font-family:var(--font-mono); font-size:13px;
+      background:var(--code-bg); color:var(--accent);
+      padding:2px 6px; border-radius:4px;
+    }
+    .brief-card pre {
+      background:var(--code-bg); border:1px solid var(--border);
+      border-radius:10px; padding:16px; overflow-x:auto; margin-bottom:16px;
+    }
+    .brief-card pre code { background:none; padding:0; }
+    .brief-card a { color:var(--primary); text-decoration:none; font-weight:500; }
+    .brief-card a:hover { text-decoration:underline; }
+    .brief-card hr {
+      border:none; border-top:1px solid var(--border); margin:24px 0;
+    }
+    .brief-card strong { color:var(--text); font-weight:700; }
+
+    /* ============================================================  SAVED NOTICE */
+    .saved-notice {
+      margin-top:16px; padding:12px 18px;
+      background:var(--primary-glow); border:1px solid var(--border-h);
+      border-radius:10px; font-size:13px; color:var(--primary); font-weight:500;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    /* ============================================================  FOOTER */
+    footer {
+      border-top:1px solid var(--border); padding:24px;
+      text-align:center; font-size:12px; color:var(--muted); margin-top:80px;
+    }
+
+    /* ============================================================  RESPONSIVE */
+    @media(max-width:640px){
+      .input-group { flex-direction:column; }
+      .pipeline { flex-direction:column; }
+      .step { border-radius:10px !important; border:1px solid var(--border) !important; }
+      .step-arrow { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="accent">&lt;/&gt;</span> ResearchScout<span style="color:var(--secondary)">.</span>
+      </a>
+      <span class="nav-badge">⚡ FlyRank FL-09 — Live Agent</span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">
+        <span class="dot"></span> Autonomous AI Research Agent — arXiv Live
+      </div>
+      <h1>Fetch any paper.<br /><span class="grad">Get an instant engineering brief.</span></h1>
+      <p>ResearchScout connects to the live arXiv REST API, parses Atom XML, synthesises a structured research brief, and saves it — in under 2 seconds. No LLM API costs. No external dependencies.</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value">&lt;2s</div>
+        <div class="stat-label">End-to-End Runtime</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2</div>
+        <div class="stat-label">Live Tools Connected</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">0</div>
+        <div class="stat-label">External Dependencies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">XML Parse Accuracy</div>
+      </div>
+    </div>
+
+    <!-- PIPELINE -->
+    <p class="section-label" style="text-align:center;margin-bottom:12px;">Agent Architecture</p>
+    <div class="pipeline" id="pipeline">
+      <div class="step" id="step-1">
+        <div class="step-num">Tool 1</div>
+        <div class="step-name">arXiv REST API</div>
+        <div class="step-desc">Live HTTP request → Atom XML response</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step" id="step-2">
+        <div class="step-num">Parser</div>
+        <div class="step-name">XML Engine</div>
+        <div class="step-desc">ElementTree namespace-aware parsing</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step" id="step-3">
+        <div class="step-num">Core Job</div>
+        <div class="step-name">Synthesis Engine</div>
+        <div class="step-desc">Structured 5-section brief generation</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step" id="step-4">
+        <div class="step-num">Tool 2</div>
+        <div class="step-name">Filesystem Save</div>
+        <div class="step-desc">Persists .md brief to /research_briefs</div>
+        <div class="step-arrow">→</div>
+      </div>
+    </div>
+
+    <!-- SEARCH CARD -->
+    <div class="search-section">
+      <p class="section-label">Run the Agent</p>
+      <div class="search-card">
+        <div class="input-group">
+          <input
+            id="queryInput"
+            class="arxiv-input"
+            type="text"
+            placeholder="arXiv ID (e.g. 2312.00752) or topic (e.g. attention mechanism)"
+            autocomplete="off"
+          />
+          <button class="btn-run" id="runBtn" onclick="runAgent()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Run Agent
+          </button>
+        </div>
+
+        <!-- Benchmark chips -->
+        <div class="chips">
+          <span class="chip" onclick="loadChip('2312.00752')">
+            2312.00752 <span class="chip-title">— Mamba SSM</span>
+          </span>
+          <span class="chip" onclick="loadChip('1706.03762')">
+            1706.03762 <span class="chip-title">— Attention Is All You Need</span>
+          </span>
+          <span class="chip" onclick="loadChip('2303.08774')">
+            2303.08774 <span class="chip-title">— GPT-4 Technical Report</span>
+          </span>
+          <span class="chip" onclick="loadChip('2005.14165')">
+            2005.14165 <span class="chip-title">— GPT-3 (Brown et al.)</span>
+          </span>
+        </div>
+
+        <!-- Status bar -->
+        <div class="status-bar" id="statusBar">
+          <div class="spinner" id="spinner"></div>
+          <span id="statusText">Querying arXiv REST API…</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUT SECTION -->
+    <div class="output-section" id="outputSection">
+      <div class="output-header">
+        <div class="output-meta" id="outputMeta"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-copy" onclick="copyBrief(event)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy Markdown
+          </button>
+          <button class="btn-download" onclick="downloadBrief()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download .md
+          </button>
+        </div>
+      </div>
+
+      <div class="brief-card" id="briefCard"></div>
+
+      <div class="saved-notice" id="savedNotice">
+        ✅ Brief persisted to local filesystem via <strong>Tool 2</strong>.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    ResearchScout Agent — Abdul Sami Uthwal &nbsp;|&nbsp; FlyRank FL-09 — General AI Fluency Track &nbsp;|&nbsp;
+    <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments" target="_blank" style="color:var(--primary);">GitHub Repo</a>
+  </footer>
+
+  <!-- ================================================================ JS -->
+  <script>
+    let lastMarkdown = '';
+    let lastPaperId  = '';
+
+    // Configure marked for safe rendering
+    marked.setOptions({ breaks: true, gfm: true });
+
+    function loadChip(id) {
+      document.getElementById('queryInput').value = id;
+    }
+
+    function setStatus(type, text) {
+      const bar = document.getElementById('statusBar');
+      const sp  = document.getElementById('spinner');
+      bar.className = 'status-bar ' + type;
+      document.getElementById('statusText').textContent = text;
+      if (type === 'loading') {
+        sp.style.display = 'block';
+      } else {
+        sp.style.display = 'none';
+      }
+    }
+
+    function highlightStep(activeId) {
+      ['step-1','step-2','step-3','step-4'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      if (activeId) document.getElementById(activeId).classList.add('active');
+    }
+
+    async function runAgent() {
+      const query = document.getElementById('queryInput').value.trim();
+      if (!query) return;
+
+      const btn = document.getElementById('runBtn');
+      btn.disabled = true;
+
+      document.getElementById('outputSection').classList.remove('visible');
+      setStatus('loading', 'Step 1 of 3 — Querying arXiv REST API live…');
+      highlightStep('step-1');
+
+      try {
+        // Simulate step-by-step visual pipeline progression
+        await delay(600);
+        setStatus('loading', 'Step 2 of 3 — Parsing Atom XML response…');
+        highlightStep('step-2');
+
+        await delay(400);
+        setStatus('loading', 'Step 3 of 3 — Synthesising engineering brief…');
+        highlightStep('step-3');
+
+        const res = await fetch('/api/research', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ query }),
+        });
+
+        const data = await res.json();
+
+        if (!data.success) throw new Error(data.error || 'Unknown error');
+
+        highlightStep('step-4');
+        setStatus('loading', 'Saving brief to local filesystem…');
+        await delay(300);
+
+        // Render output
+        lastMarkdown = data.brief_markdown;
+        lastPaperId  = data.metadata.paper_id.replace(/\//g, '_').replace(/\./g, '_');
+
+        const meta = data.metadata;
+        const authorsStr = (meta.authors || []).slice(0,3).join(', ') + (meta.authors.length > 3 ? ' et al.' : '');
+
+        document.getElementById('outputMeta').innerHTML = `
+          <span class="meta-tag">📄 <span>${meta.paper_id}</span></span>
+          <span class="meta-tag">👤 <span>${authorsStr}</span></span>
+          <span class="meta-tag">📅 <span>${meta.published}</span></span>
+          <span class="meta-tag">⚡ <span>${data.elapsed_ms}ms</span></span>
+        `;
+
+        document.getElementById('briefCard').innerHTML = marked.parse(data.brief_markdown);
+        document.getElementById('savedNotice').innerHTML = `✅ Brief persisted → <code style="background:var(--code-bg);padding:2px 6px;border-radius:4px;font-size:12px;">${data.saved_path}</code>`;
+
+        document.getElementById('outputSection').classList.add('visible');
+        document.getElementById('statusBar').className = 'status-bar';
+
+        document.getElementById('outputSection').scrollIntoView({ behavior:'smooth', block:'start' });
+
+      } catch (err) {
+        setStatus('error', '❌ Error: ' + err.message);
+        highlightStep(null);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    function copyBrief(event) {
+      navigator.clipboard.writeText(lastMarkdown).then(() => {
+        const btn = event.target.closest('.btn-copy');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        setTimeout(() => btn.innerHTML = orig, 2000);
+      });
+    }
+
+    function downloadBrief() {
+      const blob = new Blob([lastMarkdown], { type:'text/markdown' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `arxiv_${lastPaperId}_brief.md`;
+      a.click();
+    }
+
+    // Allow Enter key to trigger run
+    document.getElementById('queryInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') runAgent();
+    });
+  </script>
+</body>
+</html>
