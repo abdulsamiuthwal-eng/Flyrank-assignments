@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 09 Deliverable — Plant Your Flag | ABDUL SAMI UTHWAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 40px 50px;
+            color: #1e293b;
+            background: #ffffff;
+            line-height: 1.6;
+            font-size: 13.5px;
+        }
+
+        .header {
+            border-bottom: 3px solid #059669;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+            border: 1px solid #10b981;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 4px 0 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .meta-item strong {
+            color: #475569;
+        }
+
+        .meta-item a {
+            color: #0284c7;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            border-left: 4px solid #059669;
+            padding-left: 10px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        p, li {
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12.5px;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .code-box {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 14px 0;
+            white-space: pre-wrap;
+        }
+
+        .flyrank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin: 12px 0;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
+            color: #64748b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="badge">FlyRank General AI Fluency — Week 09</span>
+        <h1>Plant Your Flag — Domain, Analytics & Graduate Badge</h1>
+        <p style="color: #64748b; font-weight: 500;">Public Launch Verification, Real-Time Web Analytics Ingestion, and FlyRank Graduate Badge Placement</p>
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item"><strong>Student:</strong> Abdul Sami Uthwal</div>
+        <div class="meta-item"><strong>Track:</strong> General AI Fluency (Week 09)</div>
+        <div class="meta-item"><strong>Live HTTPS Domain:</strong> <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">abdulsamiuthwal-portfolio.vercel.app</a></div>
+        <div class="meta-item"><strong>GitHub Repository:</strong> <a href="https://github.com/abdulsamiuthwal-eng/Flyrank-assignments" target="_blank">abdulsamiuthwal-eng/Flyrank-assignments</a></div>
+    </div>
+
+    <h2>1. Executive Summary & Public Launch</h2>
+    <p>A custom domain turns a project into a permanent part of your professional identity. This deliverable confirms the public, production launch of Abdul Sami Uthwal's FlyRank AI Portfolio over HTTPS with active analytics, social cards, custom favicon, and the embedded FlyRank Graduate Badge.</p>
+
+    <h2>2. Launch Hygiene & Verification Matrix</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Requirement</th>
+                <th>Implementation Detail</th>
+                <th>Status / Verification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. Live Domain & HTTPS</strong></td>
+                <td>Vercel Edge Network SSL/TLS Certificate (<code>abdulsamiuthwal-portfolio.vercel.app</code>)</td>
+                <td>✅ <strong>PASS (100% Live)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2. Free Analytics</strong></td>
+                <td>Vercel Insights & Speed Analytics script (<code>/_vercel/insights/script.js</code>)</td>
+                <td>✅ <strong>PASS (Active Tracking)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>3. Favicon & Branding</strong></td>
+                <td>Custom SVG Lightning Badge Favicon (<code>data:image/svg+xml...</code>)</td>
+                <td>✅ <strong>PASS (Browser Verified)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>4. Social OpenGraph</strong></td>
+                <td><code>og:title</code>, <code>og:description</code>, <code>og:image</code> (sitemap_sketch.png)</td>
+                <td>✅ <strong>PASS (Social Card Live)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>5. Twitter Summary Card</strong></td>
+                <td><code>twitter:card</code> set to <code>summary_large_image</code></td>
+                <td>✅ <strong>PASS (Twitter Card Live)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>6. Graduate Badge</strong></td>
+                <td>Embedded FlyRank Verified Badge in footer linking to <code>https://internship.flyrank.ai</code></td>
+                <td>✅ <strong>PASS (Footer Live)</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Embedded FlyRank Graduate Badge</h2>
+    <div class="flyrank-badge">
+        <span>⚡ FlyRank Verified Graduate</span> &bull; <span>General AI Fluency & ML Track • 2026 ✓</span>
+    </div>
+
+    <h2>4. Injected Analytics & Badge Code</h2>
+    <div class="code-box">&lt;!-- Vercel Analytics & Speed Insights Script --&gt;
+&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;
+
+&lt;!-- FlyRank Graduate Verification Badge --&gt;
+&lt;div class="flyrank-badge-wrapper"&gt;
+    &lt;a href="https://internship.flyrank.ai" target="_blank" class="flyrank-badge"&gt;
+        &lt;span class="badge-icon"&gt;⚡&lt;/span&gt;
+        &lt;span class="badge-title"&gt;FlyRank Verified Graduate&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</div>
+
+    <div class="footer-note">
+        FlyRank Internship Build — Week 09 Plant Your Flag Launch | Student: Abdul Sami Uthwal
+    </div>
+
+</body>
+</html>
