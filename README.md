@@ -17,32 +17,7 @@
 
 <br/>
 
-<!-- Most Used Languages Native Progress Card -->
-<table align="center" width="85%" style="border: 1px solid #1f2937; border-radius: 12px; background-color: #0d1117;">
-  <tr>
-    <td style="padding: 16px; border: none;">
-      <h4 align="left" style="margin:0; color:#10b981; font-family: sans-serif;">📊 Repository Language Distribution</h4>
-      <br/>
-      <!-- Rounded Multi-Color Progress Bar -->
-      <div style="width: 100%; height: 12px; background-color: #21262d; border-radius: 6px; overflow: hidden; display: flex;">
-        <div style="width: 75%; height: 100%; background-color: #3572A5;" title="Python 75%"></div>
-        <div style="width: 15%; height: 100%; background-color: #e34c26;" title="HTML 15%"></div>
-        <div style="width: 7%; height: 100%; background-color: #f1e05a;" title="JavaScript 7%"></div>
-        <div style="width: 3%; height: 100%; background-color: #563d7c;" title="CSS 3%"></div>
-      </div>
-      <br/>
-      <!-- Language Legend -->
-      <p align="left" style="font-size: 13px; color: #9ca3af; margin:0;">
-        <span style="color:#3572A5;">●</span> <b>Python</b> 75.0% &nbsp;&nbsp;&nbsp;
-        <span style="color:#e34c26;">●</span> <b>HTML5</b> 15.0% &nbsp;&nbsp;&nbsp;
-        <span style="color:#f1e05a;">●</span> <b>JavaScript</b> 7.0% &nbsp;&nbsp;&nbsp;
-        <span style="color:#563d7c;">●</span> <b>CSS3</b> 3.0%
-      </p>
-    </td>
-  </tr>
-</table>
 
-<br/>
 
 <!-- Tech Stacks Inside Dark Rounded Border Box Container -->
 <table align="center" width="85%" style="border: 2px solid #10b981; border-radius: 16px; background-color: #0d1117;">
