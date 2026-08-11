@@ -17,26 +17,56 @@
 
 <br/>
 
-<!-- Animated Tech Stack Icons -->
+<!-- Most Used Languages Native Progress Card -->
+<table align="center" width="85%" style="border: 1px solid #1f2937; border-radius: 12px; background-color: #0d1117;">
+  <tr>
+    <td style="padding: 16px; border: none;">
+      <h4 align="left" style="margin:0; color:#10b981; font-family: sans-serif;">📊 Repository Language Distribution</h4>
+      <br/>
+      <!-- Rounded Multi-Color Progress Bar -->
+      <div style="width: 100%; height: 12px; background-color: #21262d; border-radius: 6px; overflow: hidden; display: flex;">
+        <div style="width: 75%; height: 100%; background-color: #3572A5;" title="Python 75%"></div>
+        <div style="width: 15%; height: 100%; background-color: #e34c26;" title="HTML 15%"></div>
+        <div style="width: 7%; height: 100%; background-color: #f1e05a;" title="JavaScript 7%"></div>
+        <div style="width: 3%; height: 100%; background-color: #563d7c;" title="CSS 3%"></div>
+      </div>
+      <br/>
+      <!-- Language Legend -->
+      <p align="left" style="font-size: 13px; color: #9ca3af; margin:0;">
+        <span style="color:#3572A5;">●</span> <b>Python</b> 75.0% &nbsp;&nbsp;&nbsp;
+        <span style="color:#e34c26;">●</span> <b>HTML5</b> 15.0% &nbsp;&nbsp;&nbsp;
+        <span style="color:#f1e05a;">●</span> <b>JavaScript</b> 7.0% &nbsp;&nbsp;&nbsp;
+        <span style="color:#563d7c;">●</span> <b>CSS3</b> 3.0%
+      </p>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+<!-- Tech Stacks Inside Dark Rounded Border Box Container -->
+<table align="center" width="85%" style="border: 2px solid #10b981; border-radius: 16px; background-color: #0d1117;">
+  <tr>
+    <td align="center" style="padding: 16px; border: none;">
+      <h4 style="margin-top:0; margin-bottom:12px; color:#9ca3af; font-family: sans-serif;">⚡ CORE TECH STACK & FRAMEWORKS</h4>
+      <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=py,flask,sklearn,html,css,js,git,vercel,vscode&perline=9" alt="Tech Stack Icons" />
+      </a>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+<!-- Portfolio & Email Connect Icons Row (GitHub Link Removed) -->
 <p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,flask,sklearn,html,css,js,git,github,vercel,vscode&perline=10" alt="Tech Stack Icons" />
+  <a href="https://abdulsamiuthwal-portfolio.vercel.app/" target="_blank">
+    <img src="https://skillicons.dev/icons?i=vercel" height="42" alt="Live Portfolio" title="ABDUL SAMI UTHWAL Live Portfolio" />
   </a>
-</p>
-
-<!-- Live Production Metrics Badges Grid -->
-<p align="center">
-  <img src="https://img.shields.io/badge/ML_Champion_F1-0.783-059669?style=for-the-badge&logo=scikit-learn&logoColor=white" />
-  <img src="https://img.shields.io/badge/ROC_AUC_Score-0.983-10b981?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Agent_Latency-%3C900ms-3b82f6?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/PageSpeed_Score-98%2F100-059669?style=for-the-badge&logo=lighthouse&logoColor=white" />
-</p>
-
-<!-- Social & Contact Quick Connect Badges -->
-<p align="center">
-  <a href="https://abdulsamiuthwal-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Live_Portfolio-059669?style=for-the-badge&logo=vercel&logoColor=white" /></a>
-  <a href="https://github.com/abdulsamiuthwal-eng"><img src="https://img.shields.io/badge/GitHub_Profile-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
-  <a href="mailto:abdulsamiuthwal@gmail.com"><img src="https://img.shields.io/badge/Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="mailto:abdulsamiuthwal@gmail.com">
+    <img src="https://skillicons.dev/icons?i=gmail" height="42" alt="Email ABDUL SAMI UTHWAL" title="Email ABDUL SAMI UTHWAL" />
+  </a>
 </p>
 
 </div>
