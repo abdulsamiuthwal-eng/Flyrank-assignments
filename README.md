@@ -1,7 +1,14 @@
+<!-- Animated Capsule Waving Header -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=059669&height=180&section=header&text=ABDUL%20SAMI%20UTHWAL&fontSize=42&fontColor=ffffff&animation=twinkling&desc=AI%20Systems%20%26%20Machine%20Learning%20Engineer%20%7C%20FlyRank%20Verified%20Graduate&descSize=16&descAlignY=68" width="100%" />
+</p>
+
 <!-- Animated Typing Banner Header -->
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=24&duration=3000&pause=1000&color=059669&center=true&vCenter=true&width=750&lines=ABDUL+SAMI+UTHWAL+%E2%80%94+AI+Systems+%26+ML+Engineer;FlyRank+Verified+Graduate+%E2%80%94+Machine+Learning+Track;Autonomous+AI+Agents+%2B+GroupKFold+CTR+Optimization" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=22&duration=3000&pause=1000&color=10b981&center=true&vCenter=true&width=750&lines=ABDUL+SAMI+UTHWAL+%E2%80%94+Machine+Learning+%26+AI+Systems;GroupKFold+Gradient+Boosting+Model+(F1%3A+0.783%2C+AUC%3A+0.983);ResearchScout+Autonomous+arXiv+Agent+(%3C900ms);FlyRank+Verified+Graduate+%E2%80%94+Sarajevo+Challenge+Qualified" alt="Typing SVG" />
 </div>
+
+<br/>
 
 <div align="center">
 
@@ -23,10 +30,12 @@
   </a>
 </p>
 
-<!-- Dark Glassmorphic Rounded Cards (Stats & Top Languages) -->
+<!-- Live Production Metrics Badges Grid -->
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=abdulsamiuthwal-eng&show_icons=true&theme=dark&hide_border=false&border_radius=12&title_color=10b981&icon_color=10b981&text_color=9ca3af&bg_color=0d1117" height="170" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=abdulsamiuthwal-eng&layout=compact&theme=dark&hide_border=false&border_radius=12&title_color=10b981&text_color=9ca3af&bg_color=0d1117" height="170" />
+  <img src="https://img.shields.io/badge/ML_Champion_F1-0.783-059669?style=for-the-badge&logo=scikit-learn&logoColor=white" />
+  <img src="https://img.shields.io/badge/ROC_AUC_Score-0.983-10b981?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Agent_Latency-%3C900ms-3b82f6?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/PageSpeed_Score-98%2F100-059669?style=for-the-badge&logo=lighthouse&logoColor=white" />
 </p>
 
 <!-- Social & Contact Quick Connect Badges -->
