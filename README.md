@@ -192,45 +192,26 @@ Open browser at: `http://127.0.0.1:5000`
 
 ## 🤝 Acknowledgments & Special Thanks
 
-<table align="center" width="100%" style="border: 2px solid #059669; border-radius: 16px; background-color: #0d1117; padding: 20px;">
-  <tr>
-    <td style="border:none;">
-      <!-- Centered FlyRank Logo Header -->
-      <p align="center" style="margin-top:4px; margin-bottom:12px;">
-        <a href="https://flyrank.ai" target="_blank">
-          <img src="https://img.shields.io/badge/FlyRank_AI-Official_Ecosystem-059669?style=for-the-badge&logo=rocket&logoColor=white" height="36" alt="FlyRank AI Logo" />
-        </a>
-      </p>
-      
-      <h3 align="center" style="margin-top:0; color:#10b981; font-family:sans-serif;">🌟 FlyRank Leadership & Lead Mentorship Credit</h3>
-      <p align="center" style="color:#9ca3af; font-size:14px; margin-bottom:16px;">Special thanks to the FlyRank AI leadership team for their continuous technical mentorship, engineering frameworks, and benchmark datasets throughout this 10-week journey.</p>
-      
-      <table align="center" width="100%" style="border:none; border-collapse:separate; border-spacing:10px; background:transparent;">
-        <tr style="border:none;">
-          <td width="33%" style="border:1px solid #30363d; border-radius:12px; padding:14px; background-color:#161b22; vertical-align:top;">
-            <h4 style="margin:0 0 4px 0; color:#3b82f6; font-family:sans-serif;">🧠 Mirza Ašćerić</h4>
-            <p style="margin:0 0 8px 0; color:#10b981; font-size:12px; font-weight:bold;">Director of AI & Agent Orchestration</p>
-            <p style="margin:0; color:#9ca3af; font-size:12px; line-height:1.4;"><b>Lead Mentor — ML Track</b><br/>CTR Signal Formulation & GroupKFold Validation Audit.</p>
-          </td>
-          <td width="33%" style="border:1px solid #30363d; border-radius:12px; padding:14px; background-color:#161b22; vertical-align:top;">
-            <h4 style="margin:0 0 4px 0; color:#f7931e; font-family:sans-serif;">⚡ Léo Yigit Ekiz & Eldin Pintol</h4>
-            <p style="margin:0 0 8px 0; color:#10b981; font-size:12px; font-weight:bold;">Directors of AI Enablement</p>
-            <p style="margin:0; color:#9ca3af; font-size:12px; line-height:1.4;"><b>Lead Mentors — AI Fluency</b><br/>Autonomous Agent Architecture & Site Hardening Standards.</p>
-          </td>
-          <td width="33%" style="border:1px solid #30363d; border-radius:12px; padding:14px; background-color:#161b22; vertical-align:top;">
-            <h4 style="margin:0 0 4px 0; color:#a855f7; font-family:sans-serif;">🚀 Alen Malkoč & Team</h4>
-            <p style="margin:0 0 8px 0; color:#10b981; font-size:12px; font-weight:bold;">Co-Founder & CEO @ FlyRank</p>
-            <p style="margin:0; color:#9ca3af; font-size:12px; line-height:1.4;"><b>Internship Sponsor & Ecosystem</b><br/>Bosnia Challenge 2026 & Benchmark Datasets.</p>
-          </td>
-        </tr>
-      </table>
-      <br/>
-      <p align="center" style="margin:0;">
-        <a href="https://flyrank.ai"><img src="https://img.shields.io/badge/Dataset_Source-FlyRank_ML_Internship-059669?style=for-the-badge&logo=flyrank&logoColor=white" /></a>
-      </p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+<a href="https://flyrank.ai" target="_blank">
+  <img src="https://img.shields.io/badge/FlyRank_AI-Official_Ecosystem-059669?style=for-the-badge&logo=rocket&logoColor=white" height="38" alt="FlyRank AI Logo" />
+</a>
+
+</div>
+
+> **Special thanks to the FlyRank AI leadership team and lead mentors for their continuous technical guidance, engineering frameworks, and benchmark datasets throughout this 10-week journey:**
+
+- 🧠 **Mirza Ašćerić** *(Director of AI & Agent Orchestration @ FlyRank)*  
+  **Lead Mentor — ML Track:** CTR Opportunity Signal Formulation, Feature Design, and GroupKFold Validation Audit.
+
+- ⚡ **Léo Yigit Ekiz & Eldin Pintol** *(Directors of AI Enablement @ FlyRank)*  
+  **Lead Mentors — AI Fluency:** Autonomous Agent Architecture, Prompt Engineering, and Site Hardening Standards.
+
+- 🚀 **Alen Malkoč & The FlyRank Team** *(Co-Founder & CEO @ FlyRank)*  
+  **Internship Program Sponsor:** FlyRank Bosnia Challenge 2026, Platform Ecosystem, and Benchmark Datasets.
+
+---
 
 *Built on the FlyRank ML Internship dataset — Data source credited to [FlyRank](https://flyrank.ai).*
 
